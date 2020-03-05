@@ -1,0 +1,6 @@
+site_name: Tech Con 2020 (Dallas)
+nav:
+  - Home: index.md
+  - Application Modernization Lab Guides: appmod.md
+theme: readthedocs
+extra_css: ["extra.css"]
