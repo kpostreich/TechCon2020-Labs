@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ITC-20: - Tech Con 2020 (Dallas)</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ITC-20:";
+    var mkdocs_page_input_path = "ITC-20_v2.2-App_Modernization_WAS_Base_Container_OSCP_LABGUDE-tgf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Tech Con 2020 (Dallas)</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../appmod/">Application Modernization Lab Guides</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Tech Con 2020 (Dallas)</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ITC-20:</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="itc-20">ITC-20:</h1>
+<h1 id="app-modernization-using-was-base-container-in-ibm-cloud-pak-for-applications-redhat-openshift">App Modernization using WAS Base Container in IBM Cloud Pak for Applications &amp; RedHat OpenShift</h1>
+<p><br> </p>
+<h2 id="lab-app-modernization-using-was-base-container-on-ocp">Lab: App Modernization Using WAS Base Container on OCP</h2>
+<p>On the journey to cloud, enterprise customers are facing challenges moving their existing on-premises applications to cloud quickly and cost-effectively.</p>
+<p>The <strong>IBM Cloud Pak for Applications</strong> provides a complete and
+consistent experience and solution to modernize enterprise applications for cloud-native deployments. Customers can easily modernize their existing applications with IBM’s integrated tools and develop new cloud-native applications faster for deployment on any cloud.</p>
+<p>One of the tools included in the Cloud Pak for Applications is the <strong>IBM Cloud Transformation Advisor,</strong> a tool that is available at no charge to help you quickly evaluate on-premises Java EE applications and to prepare the apps for a rapid cloud deployment.</p>
+<p>IBM Cloud Transformation Advisor provides recommendations for the
+right-fit IBM WebSphere Application Server edition, and offers advice, best practices, and potential solutions to assess the ease of moving apps to Liberty or newer versions of WebSphere traditional on-premises or to the cloud. It accelerates application modernization to cloud while minimizing risk and reducing time to market.</p>
+<p>This lab exercise is a part of the Application Modernization lab series which focus on re-platforming WebSphere on-premise application as part of the modernization to cloud journey.</p>
+<p>We will demonstrate how to move a selected Java application from
+traditional WebSphere Application Server (WAS) environment to a <strong>WAS container</strong> without any code change and to deploy it to <strong>Red Hat OpenShift</strong> (OpenShift) cluster environment in <strong>IBM Cloud Pak for Applications</strong>.</p>
+<p>For more information on how to install a local version of the
+<strong>Transformation Advisor</strong>, please visit:
+<a href="https://www.ibm.com/cloud/architecture/tutorials/install-ibm-transformation-advisor-local">https://www.ibm.com/cloud/architecture/tutorials/install-ibm-transformation-advisor-local</a></p>
+<p><img alt="" src="../itc20/media/image2.png" /></p>
+<p><br> </p>
+<h2 id="business-scenario">Business Scenario</h2>
+<p>As illustrated below, your company has a web app called <strong>Mod Resorts</strong>, a WebSphere application showing the weather in various locations. Your company wants to move this application from on-premises (in VMs) to the cloud (in Containers) using <strong>IBM Cloud Pak for Applications</strong>.</p>
+<p>This transition delivers improved operational efficiencies for the
+application by leveraging scalable cloud capabilities with IBM Cloud Pak for Applications that the enterprise currently enjoys with its cloud native applications.</p>
+<p><img alt="" src="../itc20/media/image3.png" /></p>
+<p>As a tech lead, you have already analyzed the application using <strong>IBM Cloud</strong> <strong>Transformation Advisor.</strong></p>
+<p>Based on the analysis, you know that you can move this application from the traditional WebSphere Server ND cell environment to a containerized WAS Base server environment without any code change. </p>
+<p>Now you are planning to package the application in WAS Base traditional container and to deploy it to an OpenShift Kubernetes cluster environment in <strong>IBM Cloud Pak for Applications</strong>.</p>
+<p>By moving an application from a traditional WAS ND cell to a WAS Base container in cloud, you can take advantage of cloud to support application high availability and scalability, minimize application migration effort, reduce on-prem infrastructure and operation cost while leveraging your team’s existing WebSphere admin skills.</p>
+<p><br> </p>
+<h2 id="objective">Objective</h2>
+<p>When you have completed this lab, you will:</p>
+<ul>
+<li>understand how to move a WebSphere app from an on-premises
+    environment to the OpenShift cluster without any changes to the app code, while utilizing exiting WebSphere administration skills.</li>
+<li>learn the process to create a WAS docker container.</li>
+<li>get familiar with the WAS Base container on OpenShift deployment process.</li>
+</ul>
+<p><br> </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following prerequisites must be completed prior to beginning this
+lab:</p>
+<ul>
+<li>Familiarity with basic Linux commands</li>
+</ul>
+<p>The following symbols appear in this document at places where additional
+guidance is available.</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Purpose</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc20/media/image4.png" /></td>
+<td>Important!</td>
+<td><strong>This symbol calls attention to a particular step or command. For example, it might alert you to type a command carefully because it is case sensitive.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-info" src="../itc20/media/image5.png" /></td>
+<td>Information</td>
+<td><strong>This symbol indicates information that might not be necessary to complete a step, but is helpful or good to know.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-troubleshooting" src="../itc20/media/image6.png" /></td>
+<td><strong>Trouble-shooting</strong></td>
+<td><strong>This symbol indicates that you can fix a specific problem by completing the associated troubleshooting information.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br> </p>
+<h2 id="what-is-already-completed">What is Already Completed</h2>
+<p>Four (4) Linux VMs have been provided for this lab.</p>
+<p><img alt="" src="../itc20/media/image7.png" /></p>
+<ul>
+<li>
+<p>The OpenShift Container Platform, <strong>OCP v4.2</strong>, included with
+    <strong>Cloud Pak for Applications</strong>, is installed in four VMs, the
+    <strong>master1</strong> VM, the <strong>dns</strong> VM, the <strong>worker1</strong> VM, with one master node and one compute node.</p>
+</li>
+<li>
+<p>The CLI commands used in this lab are listed in the <strong>Commands.txt</strong> file located at the <strong>/home/ibmdemo/cp4a-labs/lab2b</strong> directory of the Workstation VM. You can use this to <strong>copy / paste</strong> these commands to the Terminal window during the lab.</p>
+</li>
+</ul>
+<p><br> </p>
+<p>The <strong>Workstation</strong> VM is the one you will use to access and work with <strong>OCP cluster</strong> in this lab.</p>
+<blockquote>
+<p>The login credentials for the <strong>Workstation</strong> VM are:</p>
+<p>User ID: <strong>ibmdemo</strong></p>
+<p>Password: <strong>passw0rd</strong></p>
+</blockquote>
+<p><br> </p>
+<h2 id="lab-tasks">Lab Tasks</h2>
+<p>During this lab, you will complete the following tasks:</p>
+<ul>
+<li>review the <strong>Mod Resorts</strong> app on local WAS server.</li>
+<li>build a WAS Base server container image.</li>
+<li>push the WAS Base server container image to OpenShift image
+    repository.</li>
+<li>deploy the WAS Base server container to OpenShift cluster</li>
+<li>verify WAS server deployment.</li>
+<li>test and verify the <strong>Mod Resorts</strong> app on WAS container</li>
+</ul>
+<p><br> </p>
+<h2 id="execute-lab-tasks">Execute Lab Tasks</h2>
+<h3 id="to-get-started-login-to-the-environment">To get started, login to the environment</h3>
+<ol>
+<li>
+<p>Log in to the Workstation VM and Get Started</p>
+<p>a) If he VMs are <strong><span class="underline">not</span></strong> already
+    started, start them by clicking the <strong>Play</strong> button</p>
+<blockquote>
+<p><img alt="A screenshot of a computer Description automatically generated" src="../itc20/media/image7.png" /></p>
+</blockquote>
+<p>b) After the VMs are started, click the <strong>Workstation</strong> VM icon to
+access it.</p>
+<blockquote>
+<p><img src="./itc19/media/image8.png" width="200" height="200"></p>
+</blockquote>
+</li>
+</ol>
+<p>The <strong>Workstation</strong> Linux Desktop is displayed. You will execute all the lab tasks on this VM.</p>
+<p><br> </p>
+<blockquote>
+<p>The login credentials for the <strong>Workstation</strong> VM are:</p>
+<p>User ID: <strong>ibmdemo</strong></p>
+<p>Password: <strong>passw0rd</strong></p>
+</blockquote>
+<p><br> </p>
+<h2 id="review-the-on-prem-websphere-application"><strong>Review the on-prem WebSphere application</strong></h2>
+<p>In this task, you review the <strong>Modresorts</strong> application deployed to the
+local WAS environment. Later, you will move it to a WAS container.</p>
+<ol>
+<li>
+<p>Start WebSphere Application Server</p>
+<p>In the <strong>Workstation</strong> VM, we have a local WebSphere Application&gt; Server which hosts the <strong>Modresorts</strong> application. To start the WAS server:</p>
+<p>a)  Open a terminal window by clicking its icon on the <strong>Workstation</strong> VM desktop tool bar.</p>
+<p><img src="./itc20/media/image10.png" width="200" height="200"></p>
+<p>b) In the terminal window, issue the command below to start the WAS server (You can <strong><em>copy /paste</em></strong> the command from the     <strong>Commands.txt</strong> file in <strong>/home/ibmdemo/cp4a-labs/lab2b</strong>  </p>
+<pre><code>/home/ibmdemo/cp4a-labs/shared/startWAS.sh
+
+    when prompted, enter the "sudo" user password as: passw0rd
+</code></pre>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image11.png" /></p>
+<p>Within a couple of minutes the WAS server will be started and ready for use.</p>
+</li>
+<li>
+<p>View the on-prem applications deployed on the WAS server.</p>
+<p>a) Access the WAS Admin Console to view the applications deployed by clicking the web browser icon desktop tool bar to open a browser window.</p>
+<p><img src="./itc20/media/image12.png" width="400" height="200"></p>
+<p>b) From the web browser window, click <strong>WebSphere Integrated Solution Console</strong> bookmark to launch the WAS console.</p>
+<p><img src="./itc20/media/image13.png" width="400" height="200"></p>
+<p>c) In the WAS Admin Console login page, Login using the following User ID and Password: </p>
+<pre><code>wsadmin / passw0rd
+</code></pre>
+<p>d) On the WAS Console page, click <strong>Applications</strong> -> <strong>Application     Types</strong> -> <strong>WebSphere enterprise applications</strong> to view the     applications deployed.</p>
+<p><img alt="A screenshot of a social media post Description automaticallygenerated" src="../itc20/media/image14.png" /></p>
+<p>In the <strong>Enterprise Applications</strong> list, you can see all applications deployed. The <strong>Mod Resorts</strong> application is in the list, it is the application you are going to move it a WAS container and to deploy it to the OpenShift cluster.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc20/media/image15.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>View the <strong>Mod Resorts</strong> application.</p>
+<p>a) From the web browser window, click new Tab to open a new browser window with the <strong>Modresorts</strong> application URL:</p>
+<blockquote>
+<p><strong>http://localhost:9080/resorts/</strong></p>
+</blockquote>
+<p>The <strong>Modresorts</strong> application home page is displayed.</p>
+<p><img alt="" src="../itc20/media/image16.png" /></p>
+</li>
+<li>
+<p>Stop the WAS server by issuing the following command in the Terminal window:</p>
+<pre><code>sudo /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1
+
+  when prompted enter the sudo password as **passw0rd**
+</code></pre>
+<p>Then enter the WAS server credentials as: <strong>wssadmin / passw0rd</strong></p>
+<blockquote>
+<p><img alt="" src="../itc20/media/image17.png" /></p>
+<p><img alt="" src="../itc20/media/image18.png" /></p>
+</blockquote>
+<p>Next, you will learn how to re-platform the application in WAS container without any code change and to deploy it to an OpenShift cluster in IBM Cloud Pak for Applications.</p>
+</li>
+</ol>
+<p><br> </p>
+<h3 id="build-a-was-base-server-container-image"><strong>Build a WAS Base Server Container Image</strong></h3>
+<p>In this task, you will build a WAS Base server Docker container image with the <strong>Mod Resorts</strong> application installed.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc20/media/image5.png" style="width:2.53958in;height:0.64583in" alt="sign-info" /></td>
+<td><p>According to Docker’s best practices, you should create a new WAS base image which adds a single application and the corresponding configuration.</p>
+<p>You should avoid configuring the image manually (after it is started) vis the Admin Console or wsadmin commands unless it is for debugging purposes. Such changes will not be persisted if you spawn a new container from the Docker image.</p></td>
+</tr>
+</tbody>
+</table>
+
+<p>There are five key files you needed to build your WAS Base server
+container image:</p>
+<ul>
+<li><strong>Dockerfile</strong>: The file defines how the Docker image that has your application and configuration pre-loaded is built</li>
+<li><strong>App runtime:</strong> The ear or war file of your application</li>
+<li><strong>app-install.props</strong>: The file defines how to install your
+    application in the WAS server</li>
+<li><strong>appConfig.py:</strong> The WAS admin script in Jython format configures the WAS server for your application</li>
+<li>
+<p><strong>PASSWORD:</strong> The file contains the WAS server console password use in the WAS container</p>
+</li>
+<li>
+<p>Review Dockerfile, app-install.props file, and appConfig.py files</p>
+<p>a)  From the Desktop tool bar, click the <strong>File Manager</strong> icon to open it.</p>
+<p><img src="./itc20/media/image19.png" width="400" height="250"></p>
+<p>b) Navigate to <strong>/home/ibmdemo/cp4a-labs/lab2b</strong> directory.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image20.png" /></p>
+<p>c) Double click the <strong>Dockerfile</strong> to open it in <strong>Text editor</strong> for reviewing.</p>
+<p><img alt="A screenshot of a social media post Description automatically &gt; generated" src="../itc20/media/image21.png" /></p>
+<p>As you can see, the <strong>Dockerfile</strong> file defines the following activities to create a WAS Base container image:</p>
+<ul>
+<li>Get the base WAS image from Docker Hub</li>
+<li>Add WAS admin console password to the WAS Base image</li>
+<li>Add the WAS server configuration script to the WAS base image</li>
+<li>Add the application installation script to the WAS base image</li>
+<li>Add the application runtime file to the WAS base image</li>
+<li>Run the configuration script to config the WAS server instance inside the container to configure the WAS server and to install the application</li>
+</ul>
+<p>d) Go back to File Manager and double click <strong>app-install.props</strong> file to review it. This is the file that defines the properties for installing the <strong>Modresorts</strong> application to the WAS server instance.</p>
+<p><img src="./itc20/media/image22.png" width="500" height="400"></p>
+<p>e) In the File Manager window, double click <strong>appConfig.py</strong> file to review its contents.</p>
+<blockquote>
+<p>This is a standard WAS admin script with Jython format for configuring WAS to run the <strong>Mod Resorts</strong> application.</p>
+<p>This is the WAS admin script file you use to convert your application settings, include JDBC and JMS resources, from a WAS ND cell to a WAS Base container.</p>
+</blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image23.png" /></p>
+</li>
+<li>
+<p>Build the WAS Base server container image</p>
+<p>a) Go back to the Terminal window and navigate to the <strong>/home/ibmdemo/cp4a-labs/lab2b</strong> directory with command</p>
+<pre><code>cd /home/ibmdemo/cp4a-labs/lab2b
+</code></pre>
+<p>b) Execute the following command to build the WAS Base docker container image using the Dockerfile you just reviewed:</p>
+<pre><code>docker build . -t default-route-openshift-image-registry.apps.demo.ibmdte.net/demo/modresorts-twas:latest
+</code></pre>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image24.png" /></p>
+<p>This creates a WAS Base docker image called <strong>default-route-openshift-image-registry.apps.demo.ibmdte.net/demo/modresorts-twas:latest</strong></p>
+<p>Where:
+- <strong>default-route-openshift-image-registry.apps.demo.ibmdte.net</strong> is the OpenShift image registry Push URL
+- <strong>demo</strong> is the OpenShift namespace
+- <strong>*modresorts-twas:latest</strong> is the image name</p>
+<p>c) After the docker container image is created, you can issue the command below to verify the docker image was created:</p>
+<pre><code>docker images | grep twas
+</code></pre>
+<p>You see the docker image is created.</p>
+<p><img alt="" src="../itc20/media/image25.png" /></p>
+<p>d) To verify the docker image and the application, create and run a local container called <strong>modresorts-twas</strong> with the command below:</p>
+<pre><code>docker run --name modsorts-twas -p 9443:9443 -d default-route-openshift-image-registry.apps.demo.ibmdte.net/demo/ modresorts-twas:latest
+</code></pre>
+</li>
+</ul>
+<p>Once the container is created, you can test the <strong>Moderesorts</strong> application by launching it in a web browser window with the URL: <a href="https://localhost:9443/resorts"><strong>https://localhost:9443/resorts</strong></a></p>
+<p>At this point, you have built the Docker container and tested the
+ModResorts application in the local docker environment.</p>
+<p>Next, you will push the Docker image to the OpenShift image registry and
+deploy the application to the RedHat OpenShift cluster in the lab
+environment.</p>
+<p><br> </p>
+<h2 id="push-the-was-container-image-to-openshift-image-registry"><strong>Push the WAS Container Image to OpenShift Image Registry</strong></h2>
+<p>After the WAS container image is built, you need to push it to an image registry. In this lab, you are using the OpenShift Image Registry to host your WAS container image.</p>
+<ol>
+<li>
+<p>From the Terminal window, issue the command below to login to the OpenShift cluster.</p>
+<pre><code>oc login -u admin -p passw0rd
+</code></pre>
+</li>
+<li>
+<p>Create a new OpenShift project (namespace) called <strong>demo</strong> to host the image</p>
+<pre><code>oc new-project demo
+</code></pre>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image26.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Execute the following commands to login to the OpenShift image
+    repository and to push your docker image</p>
+<pre><code>docker login -u admin -p $(oc whoami -t) default-route-openshift-image-registry.apps.demo.ibmdte.net
+
+docker push default-route-openshift-image-registry.apps.demo.ibmdte.net/demo/modresorts-twas:latest
+</code></pre>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image27.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Verify the pushed Docker image was successful pushed to the
+    OpenShift image repository.</p>
+<p>a) Click the web browser icon on the desktop toolbar to go back to the browser window.</p>
+<p>b) Click <strong>OpenShift web console</strong> bookmark to open the <strong>OCP</strong>  console.</p>
+<p><img src="./itc20/media/image28.png" width="400" height="200"></p>
+<p>c) The <strong>OCP</strong> web console login page is displayed. Click the
+<strong>kube:admin</strong> login link</p>
+<p><img src="./itc20/media/image29.png" width="450" height="200"></p>
+<p>d) Click to select <strong>kubeadmin</strong> username and click <strong>Log In</strong>.</p>
+<p><img src="./itc20/media/image30.png" width="450" height="200"></p>
+<p>The <strong>OCP</strong> <strong>Web Console Home</strong> page is displayed.</p>
+<p>e) From the <strong>OCP</strong> <strong>Web Console Home</strong> page, click <strong>Builds > Images Streams</strong> from the menu</p>
+<p><img alt="" src="../itc20/media/image31.png" /></p>
+<p>f) Using the Drop-Down menu, change project (namespace) to <strong>Project: demo</strong></p>
+<p><img alt="" src="../itc20/media/image32.png" /></p>
+<p>g) You can see the image you just pushed is listed as an available Image Streams</p>
+<p><img alt="" src="../itc20/media/image33.png" /></p>
+<p>h) Click the <strong>modresorts-twas</strong> Image Stream link to view its details.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image34.png" /></p>
+</blockquote>
+<p>In the <strong>Image Stream Details</strong> Page <strong>Overview</strong> section, you will see the public image repository you used to push the image.</p>
+<p>Notice that the public image repository is mapped to an internal image repository which will be used to deploy the application.</p>
+<p>The internal image repository is: <strong>image-registry.openshift-image-registry.svc:5000/demo/modresorts-twas</strong></p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image35.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="deploy-the-was-container-to-openshift-cluster"><strong>Deploy the WAS Container to OpenShift Cluster</strong></h2>
+<p>Now that the WAS container image is available in the OpenShift image registry, you will deploy the WAS container to the OpenShift cluster using the OpenShift “<strong>oc</strong>” CLI.</p>
+<p>Kubernetes resource files (YAML) are needed to deploy the application to OpenShift (Kubernetes Cluster). Take a moment to review the deployment resources used in the lab.</p>
+<ol>
+<li>
+<p>View the deployment YAML files. In this lab you are going to use three YAML files to deploy the WAS container, these files are:</p>
+<ul>
+<li><strong>deploy.yaml</strong> – create a WAS container in the OpenShift cluster</li>
+<li><strong>service.yaml</strong> – create a service to expose the WAS container</li>
+<li><strong>route.yaml</strong> – create a route to access the WAS container service</li>
+</ul>
+<p>a) From the <strong>File Manager</strong> window, navigate to <strong>/home/ibmdemo/cp4a-labs/lab2b/deploy</strong> directory where these three YAML files are located.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image36.png" /></p>
+<p>b) Double-click the <strong>deploy.yaml</strong> file to open it in the text editor.</p>
+<p>The file contains the basic requirements of the WAS container deployment. The container name is set as <strong>modresorts-app-twas</strong> and it is deployed to the <strong>demo</strong> namespace.</p>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc20/media/image37.png" /></p>
+<p>c) Double-click the <strong>service.yaml</strong> file to view its contents.</p>
+<p>The file exposes the <strong>Modresorts</strong> application ports <strong>9080</strong> and <strong>9443</strong>. The port type in the OpenShift cluster is set as <strong>ClusterIP</strong>.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image38.png" /></p>
+<p>d) Double-click the <strong>route.yaml</strong> file to view its contents.</p>
+<p>The file defines the OpenShift route used for the WAS container as <strong>modresorts-app-twas.apps.demo.ibmdte.net</strong> which enables users to access the <strong>Modresorts</strong> application on a public address.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image39.png" /></p>
+</li>
+<li>
+<p>Deploy the WAS container to OpenShift cluster using the deployment YAML files that you reviewed.</p>
+<p>a) From the Terminal window, change to the <strong>/home/ibmdemo/cp4a-labs/lab2b</strong> directory</p>
+<pre><code>cd /home/ibmdemo/cp4a-labs/lab2b
+</code></pre>
+<p>b) Issue OpenShift CLI command to deploy the WAS container to the OpenShift cluster</p>
+<pre><code>oc apply -f deploy
+</code></pre>
+<p><img alt="" src="../itc20/media/image40.png" /></p>
+<p>The command deploys the resources defined in the three YAML files in the <strong>deploy</strong> directory and create WAS container pod, service, and route in the <strong>demo</strong> namespace.</p>
+</li>
+</ol>
+<p><br></p>
+<p>Next, you will verify the deployment of the ModResorts application running in OpenShift</p>
+<p><br> </p>
+<h2 id="verify-the-deployment"><strong>Verify the Deployment</strong></h2>
+<p>In this task, you access the OpenShift Web Console to verify the WAS container deployment</p>
+<ol>
+<li>
+<p>Go back to the <strong>OpenShift Web Console</strong>, click <strong>Workloads >
+    Pods</strong>, then select <strong>demo</strong> project from the project list, if it not already selected.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image41.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>You will see that the WAS container is deployed and is in    <strong>running</strong> status.</p>
+<blockquote>
+<p><img alt="" src="../itc20/media/image42.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click the modresorts pod link to go to its <strong>overview</strong> page where you can see its memory and CPU usage, among other detail information.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image43.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Now from the <strong>OpenShift Wen Console</strong> navigation panel, click
+    <strong>Networking > Services</strong>. You will see the WAS container
+    <strong>service</strong>. Click the service name to view its details.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image44.png" /></p>
+</blockquote>
+<p>In the Service Details page, you can see the service ports as you defined in the <strong>service.yaml</strong> file.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image45.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Next navigate to <strong>Networking > Route</strong> to view the WAS container service route. Click the <strong>Location URL</strong> to launch the  <strong>Modresort</strong> application.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc20/media/image46.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Type the <strong>Modresorts</strong> application context root <strong>resorts</strong> in the end of the URL and press <strong>Enter</strong>.</p>
+<p>The full URL is: <a href="https://modresorts-app-twas.apps.demo.ibmdte.net/resorts">https://modresorts-app-twas.apps.demo.ibmdte.net/resorts</a></p>
+</li>
+<li>
+<p>The <strong>Modresorts</strong> application home page is displayed.</p>
+<blockquote>
+<p><img alt="A screenshot of a palm tree Description automatically generated" src="../itc20/media/image47.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><strong>Congratulations! You have successfully completed *App Modernization using WAS Base Container on OCP Lab!</strong>*</p>
+<p><br> </p>
+<h2 id="summary">Summary</h2>
+<p>In this lab, you learned the App Modernization re-platform process to move an existing traditional WAS application to WAS Base container and to deploy it to an OpenShift cluster without any code change.</p>
+<p><a href="https://developer.ibm.com/components/cloud-pak-for-applications/">IBM Cloud Pak for Applications</a>, built on the Red Hat® OpenShift® Container Platform, provides a long-term solution to help you transition between public, private, and hybrid clouds, and to create new business applications.</p>
+<p>As a key component of <strong>IBM Cloud Pak for Applications</strong>, traditional WebSphere application Server can still run in containers, and reap the benefits of consistency and reliability that containers provide.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ITC-21 - Tech Con 2020 (Dallas)</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ITC-21";
+    var mkdocs_page_input_path = "ITC-21_v3.13_CreateDeployCloudNativeICP4A_LABGUDE-tgf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Tech Con 2020 (Dallas)</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../appmod/">Application Modernization Lab Guides</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Tech Con 2020 (Dallas)</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ITC-21</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="itc-21">ITC-21</h1>
+<h1 id="create-and-deploy-a-cloud-native-app-to-ibm-cloud-pak-for-applications-cp4apps">Create and Deploy a Cloud Native App to IBM Cloud Pak for Applications (CP4Apps)</h1>
+<p><br> </p>
+<h2 id="lab-create-and-deploy-an-insurance-quote-app-to-openshift-with-ibm-cloud-pak-for-applications">Lab: Create and Deploy an Insurance Quote App to OpenShift with IBM Cloud Pak for Applications</h2>
+<p>On the journey to cloud, enterprise customers are facing challenges
+moving their existing on-premises applications to cloud and creating
+cloud native business applications quickly and cost-effectively. The
+<strong>IBM Cloud Pak for Applications</strong> (CP4Apps) provides a complete and
+consistent experience and solution to modernize enterprise applications for cloud-native deployments. Customers can easily modernize their existing applications with IBM’s integrated tools and develop new cloud-native applications faster for deployment on any cloud.</p>
+<p>One of the features included in the Pak is ‘Accelerators for Teams’, a modern microservices-based framework that enables developers, architects and operation teams to work together, faster on end-to-end solutions for the team to build, deploy, and manage the lifecycle of Kubernetes-based applications on OpenShift Container Platform.</p>
+<p>Accelerators for Teams provides Application Stacks, Pipelines for modern DevOps and Developer Tools. These features are derived from Kabanero, an open source project that integrates many open source projects and is the upstream project for Cloud Pak for Applications.</p>
+<p>You can get starting using only open source with Kabanero and try out
+capabilities in Cloud Pak for Applications. Learn more at <a href="https://kabanero.io">https://kabanero.io</a></p>
+<p>For more information about IBM Cloud Pak for Applications, please visit <a href="https://www.ibm.com/cloud/cloud-pak-for-applications">Cloud Pak for Applications</a>.</p>
+<p>In this lab you will first learn how to develop a cloud-native
+microservice application using pre-built Application Stacks, customized for your enterprise. You will use a local iterative dev experience with a CLI to rapidly develop a microservice with a pre-built Application Stack and deploy to Red Hat OpenShift. The Appsody CLI will be used.</p>
+<p>Then you will learn how to use different stacks to develop microservices applications and deploy the applications to Red Hat OpenShift using different techniques including Kubernetes-native
+pipelines based on an open source project called Tekton from the
+Continuous Delivery Foundation. This provides the preferred and governed way applications should be verified, built and deployed to OpenShift clusters consistently.</p>
+<p>As shown in the diagram below, Application stacks (built using Appsody) simplify the process of building and deploying applications to OpenShift for both modernized and new cloud-native apps.</p>
+<p><img alt="A picture containing screenshot Description automatically
+generated" src="../itc21/media/image2.png" /></p>
+<p><br> </p>
+<h2 id="business-scenario">Business Scenario</h2>
+<p>The lab covers the following business scenario:</p>
+<p>Your company is developing a cloud native microservice application to
+provide new insurance quote services to your customers. The application consists of a frontend web UI service application and a backend REST application.</p>
+<p><img alt="A close up of text on a white background Description automatically
+generated" src="../itc21/media/image3.png" /></p>
+<p>Your team architect has designed to use a <strong>Node.js Express</strong> stack for the web application and to use the Spring Boot stack for the backend application.</p>
+<p>He has made these available to developers in a local Hub called a
+“<strong>Collection Hub</strong>” which brings together the <strong>Customized Application Stacks</strong> and the <strong>Pipelines</strong> that control build and deployment consistency on the enterprise’s OpenShift cluster.</p>
+<p>As a developer, you will configure your developer tools to this Local
+Hub to create the cloud native applications using the customized
+Application Stacks (nodejs-express and spring boot) that meets your
+enterprises standards and multi-disciplinary team’s decisions. You will then deploy them to the OpenShift Container Platform.</p>
+<p><br> </p>
+<h2 id="objective">Objective</h2>
+<p>The objectives of this lab are to:</p>
+<ul>
+<li>Learn how to use the Appsody CLI to create cloud native microservice applications with Application Stacks.</li>
+<li>Learn how to deploy microservice applications to OpenShift using
+    pre-built yet customizable Pipelines that are Kubernetes-native,
+    based on an open source project called Tekton.</li>
+</ul>
+<p><br> </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following prerequisites must be completed prior to beginning this
+lab:</p>
+<ul>
+<li>Familiarity with basic Linux commands</li>
+<li>Have internet access</li>
+<li>Have a GitHub account. If you do not have it yet, you can sign up
+    for a free account at: <a href="https://github.com/">https://github.com</a></li>
+</ul>
+<p>The following symbols appear in this document at places where additional
+guidance is available.</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Purpose</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc21/media/image4.png" /></td>
+<td>Important!</td>
+<td><strong>This symbol calls attention to a particular step or command. For example, it might alert you to type a command carefully because it is case sensitive.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-info" src="../itc21/media/image5.png" /></td>
+<td>Information</td>
+<td><strong>This symbol indicates information that might not be necessary to complete a step, but is helpful or good to know.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-troubleshooting" src="../itc21/media/image6.png" /></td>
+<td><strong>Trouble-shooting</strong></td>
+<td><strong>This symbol indicates that you can fix a specific problem by completing the associated troubleshooting information.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br> </p>
+<h2 id="what-is-already-completed">What is Already Completed</h2>
+<p>Four (4) Linux VMs have been provided for this lab.</p>
+<p><img alt="" src="../itc21/media/image7.png" /></p>
+<ul>
+<li>
+<p>The OpenShift Container Platform, <strong>OCP v4.2</strong>, included with
+    <strong>Cloud Pak for Applications</strong>, is installed in four VMs, the
+    <strong>master1</strong> VM, the <strong>dns</strong> VM, the <strong>worker1</strong> VM, with one master
+    node and one compute nodes.</p>
+</li>
+<li>
+<p>The IBM <strong>Cloud Pak for Applications</strong> has been deployed to the
+    <strong>OCP cluster</strong>. For information on how to install IBM <strong>Cloud Pak
+    for Applications</strong> on OpenShift, please visit:
+    <a href="https://www.ibm.com/support/knowledgecenter/SSCSJL_4.x/welcome.html">https://www.ibm.com/support/knowledgecenter/SSCSJL_4.x/welcome.html</a></p>
+</li>
+<li>
+<p>Appsody client (v0.5.4) is installed on the <strong>Workstation VM</strong>.</p>
+</li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><img src="./itc21/media/image5.png" style="width:1.90625in;height:0.60625in" alt="sign-info" /></p>
+</blockquote></td>
+<td><blockquote>
+<p>The CLI commands used in this lab are listed in the <strong>Commands.txt</strong> file located at the <em><strong>/home/ibmdemo/cp4a-labs/lab8 directory of the Workstation VM.</strong></em></p>
+<p><em><strong>You can use theses commands to copy and paste commands to the Terminal window during this lab.</strong></em></p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+
+<p>The <strong>Workstation</strong> VM is the one you will use to access and work with <strong>OCP cluster</strong> in this lab.</p>
+<blockquote>
+<p>The login credentials for the <strong>Workstation</strong> VM are:</p>
+<p>User ID: <strong>ibmdemo</strong></p>
+<p>Password: <strong>passw0rd</strong></p>
+<p><strong>Note:</strong> Use the Password above in the <strong>Workstation</strong> VM Terminal
+for <strong><em>sudo</em></strong> in the Lab</p>
+</blockquote>
+<p><br> </p>
+<h2 id="introduction-to-application-stacks-built-using-appsody-how-does-it-work">Introduction to Application Stacks built using Appsody: How does it work?</h2>
+<p><strong>Application Stacks</strong> built using Appsody, an open source project, use the well-known <strong>Dockerfile syntax</strong> to specify which language runtimes, frameworks, libraries, and tools are included. <strong>Project templates</strong> build upon these stacks, providing developers with a templatized starter application to bring into their IDE of choice and begin development.</p>
+<p>Developers run, debug, or test their application using a CLI from
+Appsody. It starts a container with the stack image, makes the
+development workspace available to the running container, and starts the Appsody controller. The controller is configurable through environment variables in the stack and manages the application within the running container.</p>
+<p>For example, the controller can watch for changes in the application
+/src directory. When these changes are saved, the controller restarts
+the application running in a docker container.</p>
+<p><strong>Application Stacks</strong>, built using Appsody, are configurable technology stacks with popular runtimes and frameworks. Two examples are: <em>Java with Eclipse MicroProfile</em> using Open Liberty and <em>Node.js with Express</em>.</p>
+<p>These stacks provide the foundation for building applications that can be deployed and managed effectively on OpenShift. Stacks allow for rapid development, whilst giving the stack provider the ability to control how the applications are composed.</p>
+<p>Building a new or modifying an application stack is similar to creating a custom Cloud Foundry build pack. We are building an enterprise curated application container that provide tools and a Docker (CRI-O) container that will be used to build a specific application kind (e.g., java-microprofile, spring-boot2, node.js-express, etc.).</p>
+<p><img alt="Appsody Flow" src="../itc21/media/image8.png" /></p>
+<h3 id="stack-hubs">Stack Hubs</h3>
+<p>The <strong>Stack Hub</strong> is the central point of control for Application
+Stacks, built using Appsody, where you can find available stacks, create new stacks, or modify existing ones.</p>
+<p>You can use the Hub content in the <strong>public repo</strong> or clone it to
+provide a private Hub that's based on your requirements. By making
+changes to the Stacks in the Hub, you can deploy updates to any
+application that's been built on them, simply by restarting the
+application.</p>
+<p><strong>Collections</strong> are simply an Application Stack and the Pipelines
+required to deploy them. A Collection Hub is a Stack Hub plus additional folder structures that store pipelines for build and deployment.</p>
+<p>When CP4Apps is installed, it is the solution architect’s role to define and customize the Application Stacks made available to developers. This is a multi-disciplinary process where Developers, Cloud Operators and Solution Architects come together and agree on choices to codify in the Application Stack and Pipelines. These customizations are done in the Local Hub in their private Git Hub Enterprise or Git Lab deployment.</p>
+<p>Stack images are copied into a Local Registry where they are used to
+ensure image builds occur in consistent and governed manner, when
+deploying through pipelines onto remote OpenShift clusters.</p>
+<p>For lab simplicity, we’ll start with an application stack that is
+provided by the <strong>Appsody open source community</strong>.</p>
+<p><br> </p>
+<h2 id="lab-tasks">Lab Tasks</h2>
+<p>During this lab, you will complete the following tasks:</p>
+<ul>
+<li>create native applications using Application Stacks based on
+    Appsody.</li>
+<li>modify the applications with insurance quote business logic</li>
+<li>Use Appsody CLI to build, deploy, and validate the front-end
+    application locally in containers</li>
+<li>deploy the quote frontend application to OpenShift using a CI/CD
+    pipeline based on Tekton.</li>
+</ul>
+<p>In this lab you'll be doing everything via the command line so that you can understand the steps in detail.</p>
+<p>If you are using an IDE like <strong>VisualStudio Code</strong>, <strong>Eclipse</strong>, or the <strong>hosted Eclipse Che IDE</strong> (CodeReady Workspaces on OpenShift), the <strong>Eclipse Codewind extension</strong> provides the same function to create, run, debug, and test these applications without using the command line or leaving the IDE.</p>
+<p><br> </p>
+<h2 id="execute-lab-tasks">Execute Lab Tasks</h2>
+<ol>
+<li>
+<p>Log in to the Workstation VM and Get Started</p>
+<p>a) If he VMs are <strong><span class="underline">not</span></strong> already
+    started, start them by clicking the <strong>Play</strong> button</p>
+<blockquote>
+<p><img alt="A screenshot of a computer Description automatically generated" src="../itc21/media/image7.png" /></p>
+</blockquote>
+<p>b) After the VMs are started, click the <strong>Workstation</strong> VM icon to access it.</p>
+<blockquote>
+<p><img src="./itc21/media/image10.png" width="200" height="200"></p>
+</blockquote>
+</li>
+</ol>
+<p>The <strong>Workstation</strong> Linux Desktop is displayed. You will execute all the lab tasks on this VM.</p>
+<p>If requested to login to the OS, use credentials: <strong>ibmdemo</strong> /<strong>passw0rd</strong></p>
+<p><br> </p>
+<h2 id="add-the-collection-hub-repo-to-appsody"><strong>Add the Collection Hub repo to Appsody</strong></h2>
+<p>Appsody uses sharable technology stacks for rapid development of quality microservice-based applications. Each Application Stack is
+pre-configured with popular open source technologies. Application Stacks include a base container image (UBI from Red Hat for all Stacks in CP4Apps) and project templates which act as a starting point for your application development.</p>
+<p>In this task, you will add the local Collection Hub built by the
+enterprises Solution Architect to Appsody.</p>
+<ol>
+<li>
+<p>From the <strong>Workstation</strong> desktop, open a Terminal window by clicking its icon on the Desktop Tool Bar.</p>
+<p><img src="./itc21/media/image11.png" width="200" height="200"></p>
+</li>
+<li>
+<p>In the <strong>Terminal</strong> window, issue the following command to add the Collection Hub to the local Appsody repo list:</p>
+<pre><code>appsody repo add kabanero https://github.com/kabanero-io/collections/releases/download/0.3.5/kabanero-index.yaml
+
+Where kabanero is the collection repo name
+</code></pre>
+</li>
+<li>
+<p>The <strong>kabanero</strong> repo is now added to Appsody. To verify it, issue command:</p>
+<pre><code>appsody repo list
+</code></pre>
+<p>The command returns the list of repos in the collection </p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image12.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>To view the available stacks included in the kabanero repo, run the following command:</p>
+<pre><code>appsody list kabanero
+</code></pre>
+<p>This will give you a list of the available stacks.</p>
+<p>Notice that the kabanero repo contains Application Stacks for specific versions of Nodejs, Springboot, Microprofile.</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image13.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Set the <strong>kabanero</strong> repo as the default Appsody repo with command:</p>
+<pre><code>appsody repo set-default kabanero
+</code></pre>
+</li>
+</ol>
+<p>The default Appsody repo is now set. You will use the <strong>nodejs-express</strong> stack to develop the insurance quote front-end application.</p>
+<p><br> </p>
+<h2 id="create-the-frontend-application-and-run-it-locally"><strong>Create the frontend application and run it locally</strong></h2>
+<p>The frontend application is written in Node.js Express. First let's
+initialize a new project that uses the Node.js Express stack.</p>
+<ol>
+<li>
+<p>In the terminal window, create a directory named <strong>quote-frontend</strong>. Create a new node.js application using <strong>appsody init</strong> command shown below:</p>
+<pre><code>mkdir /home/ibmdemo/quote-frontend
+
+cd quote-frontend
+
+appsody init kabanero/nodejs-express
+</code></pre>
+<p>The new node.js application is now successfully initialized, as illustrated below.</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image14.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>After the <strong>appsody init</strong> command completes, launch Visual Studio Code (VS Code) editor with the command below to view the content of the directory.</p>
+<pre><code>code .
+</code></pre>
+<p>The Application Stack has a simplified project structure on disk.</p>
+<p>Note that this project doesn't contain a Dockerfile, Node, Express, or many of the other files that you might expect in a cloud-native  Express project.</p>
+<p>With Application Stacks built using Appsody these files - along with many best practices and opinionated decisions are provided by the stack, resulting in automatically following best practices and a much simpler view for the developer.</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image15.png" /></p>
+</blockquote>
+<p>Here is an example of what’s included in an Application Stack:</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc21/media/image16.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>In this lab, you are going to replace the starter code created in
+    the init process with the insurance quote frontend application code.</p>
+<p>a) First, edit the <strong>package.json</strong> file and add the following to the dependencies section:</p>
+<p><code>"dependencies": {
+"body-parser": "^1.19.0",
+"config": "^3.2.0",
+"express-validator": "^6.2.0",
+"pug": "^2.0.0",
+"request": "^2.88.0"</code></p>
+<p>Refer to the screen shot below to see where to place the text in the <strong>package.json</strong> file.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image17.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click <strong>File > Save All</strong> to change the change</p>
+</li>
+<li>
+<p>Then, <strong>Exit</strong> VS Code.</p>
+</li>
+<li>
+<p>Now, from the Terminal window, copy the insurance quote frontend
+    application code files from the <strong>/home/ibmdemo/cp4a-labs/lab8/exercise-frontend</strong> directory to your Appsody project:</p>
+<pre><code>cp -R /home/ibmdemo/cp4a-labs/lab8/exercise-frontend/* .
+</code></pre>
+<p>The resulting directory structure of your project is illustrated below:</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image18.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Stop Transformation Advisor Docker container that is running on port 3000, which conflicts with Appsody. This is just to work around our lab environment configuration.</p>
+<pre><code>/home/ibmdemo/ta-local/transformationAdvisor/scripts/stopTransformationAdvisor.sh
+</code></pre>
+</li>
+<li>
+<p>Start the application locally, using the following command:</p>
+<pre><code>appsody run
+</code></pre>
+</li>
+<li>
+<p>You can see the output of the application by launching <strong>a web
+    browser window</strong> and navigating to <strong>http://localhost:3000</strong></p>
+<p>The Insurance Quote form is displayed, as illustrated below</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically  generated" src="../itc21/media/image19.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>You can fill in the form and hit the button to submit it and a
+    response will appear like this:</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image20.png" />.</p>
+</blockquote>
+<p><strong>Note:</strong> In this case, the frontend application is <strong>not</strong> sending a request to the backend application. Instead it is configured to use a mock endpoint for testing purposes in development mode. This works as follows.</p>
+<ul>
+<li>quote.js uses the config module to get the value for the backend URL.</li>
+<li>When the application runs in development mode, the config module uses config/development.json to find the value for the backend URL.</li>
+</ul>
+<p>This file sets the URL to the mock endpoint in the <strong>config/development.json</strong> file.</p>
+<blockquote>
+<p><strong>{</strong></p>
+<p><strong>"backendUrl": "http://localhost:3000/quote/test"</strong></p>
+<p><strong>}</strong></p>
+</blockquote>
+<p>When the application runs in production mode (which we will see later), the config module uses <strong>config/custom-environment-variables.json</strong> file to find the value for the backend URL.</p>
+<p>This file sets the URL from the <strong>BACKEND_URL</strong> environment variable.</p>
+<blockquote>
+<p><strong>{</strong></p>
+<p><strong>"backendUrl": "BACKEND_URL"</strong></p>
+<p><strong>}</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Go back to the Terminal window and enter <strong>Ctrl+C</strong> to stop the
+    application.</p>
+</li>
+<li>
+<p><strong>Exit</strong> the VS Code UI, if it is still open</p>
+</li>
+</ol>
+<p><strong>Congratulations! You have successfully used capabilities built into IBM Cloud Pak for Applications to create, build, and deploy a cloud native application in a local containerized environment.</strong>*</p>
+<p>In the next section, you will leverage the out-of-the-box Pipelines
+included with IBM Cloud Pak for Applications to build, scan, and deploy the cloud- native application to OpenShift.</p>
+<p><strong>More information on Appsody, an Open-Source project under the
+Kabanero Open-Source project:</strong></p>
+<p>Appsody documentation on CLI commands:
+<a href="https://appsody.dev/docs/using-appsody/cli-commands/">https://appsody.dev/docs/using-appsody/cli-commands/</a></p>
+<p>Appsody documentation for Testing stacks:
+<a href="https://appsody.dev/docs/stacks/test">https://appsody.dev/docs/stacks/test</a></p>
+<p><br></p>
+<h2 id="lets-recap-what-we-have-done-so-far">Let’s recap what we have done so far</h2>
+<ul>
+<li>First, you <strong>created</strong> a new local collection hub based on a public collection hub</li>
+<li>You listed the available application stacks in the local collection hub</li>
+<li>You made your “kabanero” stack the default stack in the local
+    collection hub</li>
+<li>You <strong>initialized</strong> the “nodejs-express” application stack in the
+    dev.local repo</li>
+<li>You used Appsody CLI to “<strong>run</strong>” the “front-end” nodejs-express
+    application locally in containers, using Appsody CLI. This also
+    built the application using the out-of-the-box-resources in the
+    stack.</li>
+<li>Finally, you used the web browser to test the “front-end”
+    nodejs-express application stack from the kabanero collection.</li>
+</ul>
+<p><br></p>
+<h2 id="deploy-the-quote-frontend-application-to-openshift-with-the-cicd-pipeline"><strong>Deploy the quote-frontend application to OpenShift with the CI/CD Pipeline</strong></h2>
+<p>In this section, you will deploy the <strong>frontend</strong> application to
+OpenShift.</p>
+<p>You will use a Pipeline based on Tekton to deploy the application in a controlled and secure manner onto the OpenShift Container Platform.</p>
+<p><strong>Note:</strong> Tekton is the Open-Source upstream project for RedHat
+OpenShift Pipelines.</p>
+<p>Enterprise solution architects generally will work with Cloud Operators who manage OpenShift production clusters and developers to create <strong>approved pipelines</strong> with steps that meet their enterprise’s needs.</p>
+<ol>
+<li>
+<p>Navigate to your quote-frontend directory. We first create the
+    deployment yaml as follows:</p>
+<pre><code>cd /home/ibmdemo/quote-frontend
+
+appsody deploy --generate-only
+</code></pre>
+<p>This creates a file named <strong>app-deploy.yaml</strong> in your project folder. It will take a couple of minutes for the task to complete.</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image21.png" /></p>
+</blockquote>
+<p>On-line documentation for Appsody deploy: <a href="https://appsody.dev/docs/cli-commands/#appsody-deploy">https://appsody.dev/docs/cli-commands/#appsody-deploy</a></p>
+</li>
+<li>
+<p>Now we need to tell the frontend application how to talk to the
+    backend application.</p>
+<p>The frontend will look at an environment variable <strong>BACKEND_URL</strong> to find the address of the backend, so we will set this in the application Custom Resource (CR).</p>
+<p>a) Exit VS Code UI, if it is still running.</p>
+<p>b) Then, relaunch VS Code from the current directory of your <strong>quote-frontend</strong> app:</p>
+<pre><code>code .
+</code></pre>
+<p>c) From the VS Code edit, open the <strong>app-deploy.yaml</strong> file and add the following section as shown below:</p>
+<p><code>env:
+- name: BACKEND\_URL
+  value: &lt;http://quote-backend:8080/quote&gt;</code></p>
+<p><table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc21/media/image4.png" style="width:1.10625in;height:0.60625in" alt="sign-caution" /></td>
+<td><p><strong>Notes:</strong></p>
+<p><strong>a. Your line numbers may be different if the template code has changed since the screenshot.</strong></p>
+<p><strong>b. This is yaml file, so indentation matters. And No TABS!</strong></p></td>
+</tr>
+</tbody>
+</table></p>
+<p><img alt="" src="../itc21/media/image22.png" /></p>
+<p>d) Save the change by clicking <strong>File > Save All</strong></p>
+<p>e) <strong>Exit</strong> VS Code.</p>
+</li>
+<li>
+<p>Create a <strong>Git repo</strong> for the application. You will push the     application to your GitHub repo.</p>
+<p><table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc21/media/image4.png" style="width:0.60625in;height:0.60625in" alt="sign-caution" /></td>
+<td><p>This step requires that you have a public GitHub account.</p>
+<p><strong>If you do not have a GitHub account, create a free account at: <a href="https://github.com">https://github.com</a></strong></p></td>
+</tr>
+</tbody>
+</table></p>
+<p>a) From the web browser window, click the <strong>GitHub bookmark</strong> to launch it.</p>
+<p><img src="./itc21/media/image23.png" width="400" height="150"></p>
+<p>b) Log in to your existing GitHub account. If you do not have one,  you can sign up to get a free account.</p>
+<p>c) From your GitHub page, click <strong>Add>New repository</strong> to create a new repo.</p>
+<p><img src="./itc21/media/image24.png" width="250" height="250"></p>
+<p>d) Enter the <strong>Repository name</strong> as <strong>quote-frontend,</strong> select the  <strong>Public</strong> option and click <strong>Create repository.</strong></p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image25.png" /></p>
+</blockquote>
+<p>e) Your repository is created. Write down the GitHub repo URL link of the repository, you are going to use it later.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image26.png" /></p>
+<p>f) From the Terminal window, push your application code to the Git repo, using the following commands:</p>
+<pre><code>cd /home/ibmdemo/quote-frontend
+
+git init
+
+git add .
+
+git commit -m "first commit"
+
+git remote add origin https://github.com/&lt;your Github User Name&gt;/quote-frontend.git
+
+  Note: where &lt;your Github User Name&gt; is your GitHub user name.
+
+git push -u origin master
+
+  Note:  When prompted, enter your GitHub username and password
+</code></pre>
+</li>
+<li>
+<p>Refresh your GitHub Repo and verify the contents have been published
+    to the quote-frontend repo</p>
+<blockquote>
+<p><img alt="" src="../itc21/media/image27.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="add-the-pipeline-resources-to-openshift">Add the Pipeline resources to OpenShift</h2>
+<ol>
+<li>
+<p>Login to the OpenShift Cluster</p>
+<pre><code>oc login -u admin -p passw0rd
+</code></pre>
+</li>
+<li>
+<p>Set up a project namespace.</p>
+<p>OpenShift applications are deployed within a project. The first step in the deployment process is to create a new or select an existing project. In this lab, we are going to use an existing project called <strong>kabanero</strong>. From the Terminal window, issue the following commands:</p>
+<p>oc project kabanero</p>
+<p><strong>Note:</strong> You are now working in the “<strong>kabanero</strong>” project in OpenShift.</p>
+</li>
+<li>
+<p>Create a new Tekton pipeline CR. (Kubernetes Custom Resource)</p>
+<p><table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc21/media/image5.png" style="width:1.60625in;height:0.60625in" alt="sign-info" /></td>
+<td><p>Note: In general, developers don’t create the pipelines. They should be setup for them with all the tasks their solution architect and cloud operator teams require.</p>
+<p>In this lab, you will act as the operator to set the pipeline CR and get familiar with the process.</p></td>
+</tr>
+</tbody>
+</table></p>
+<p>a) Copy the sample pipeline CR file <strong>pipeline-resources.yaml</strong> from /home/ibmdemo/cp4a-labs/lab8/exercise-frontend/ directory to /home/ibmdemo/quote-frontend directory, using the following commands:</p>
+<pre><code>cd /home/ibmdemo/quote-frontend
+
+cp /home/ibmdemo/cp4a-labs/lab8/exercise-frontend/pipeline-resources.yaml .
+</code></pre>
+<p>b) Return to the VS Code editor, or launch it, if it is not running.</p>
+<pre><code>code .
+</code></pre>
+<p>c) Click <strong>pipeline-resources.yaml</strong> file to open it, change the GitHub user to your Github username</p>
+<p><img alt="" src="../itc21/media/image28.png" /></p>
+<p>d) Click <strong>File > Save All</strong> to save the change.</p>
+<p>e) <strong>Exit</strong> VS Code</p>
+<p>f) Deploy the pipeline resource to the OCP cluster <strong>kabanero</strong> namespace, using the following commands:</p>
+<pre><code>cd /home/ibmdemo/quote-frontend
+
+oc apply -f pipeline-resources.yaml -n kabanero
+</code></pre>
+<p><img alt="" src="../itc21/media/image29.png" /></p>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="deploy-the-quote-frontend-application-to-openshft-using-the-tekton-piepline">Deploy the quote-frontend application to OpenShft using the Tekton Piepline</h2>
+<ol>
+<li>
+<p>Access the Tekton Dashboard to setup the PipelineRun</p>
+<p>In order to provide control and consistency at scale, all build and deploy steps must go through the pipeline. So, in an enterprise setting, webhooks would be setup by the operations or solution architect that monitor the developers Git repos and trigger the PipelineRun during commit/push actions.</p>
+<p>Due to network connectivity limitations with the lab infrastructure, we are asking you to create a manual PipelineRun to simulate the webhook completing that step, enabling the rest of the lab flow to continue.</p>
+<p>a) Go back to the web browser window and launch the <strong>Tekton Dashboard</strong> by clicking its bookmark.</p>
+<p><img src="./itc21/media/image30.png" width="400" height="200"></p>
+<p>b) Click <strong>Log in with OpenShift</strong> to continue</p>
+<p><img alt="" src="../itc21/media/image31.png" /></p>
+<p>c) In the login page, click <strong>kube:admin</strong> field, select the <strong>kubeadmin</strong> user name and <strong>click Log in</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../itc21/media/image32.png" /></td>
+<td><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image33.png" /></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Create the PipelineRun and Run the Pipeline to deploy the
+    application.</p>
+<p>a) From the <strong>Tekton Dashboard</strong> page, you can click the <strong>Pipelines</strong> link to view all available pipelines, or you can click <strong>PipelineResources</strong> to view the two resourced you just created.</p>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc21/media/image34.png" /></p>
+<p>b) We are going to use the <strong>PipelineRun</strong> button to deploy the quote-frontend application, so click <strong>Create PipelineRun</strong> in the <strong>PipelineRuns</strong> page.</p>
+<p><img src="./itc21/media/image35.png" width="300" height="100"></p>
+<p>c) In the <strong>PipelineRun</strong> page, set the parameters as shown in table below. Then click <strong>Create</strong>.</p>
+<p><strong>Note:</strong> Refer to the screenshot below the table, if additional clarity is needed for input parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>kabanero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pipeline</td>
+<td>nodejs-express-build-push-deploy-pipeline</td>
+</tr>
+<tr>
+<td>git</td>
+<td>quote-frontend-git</td>
+</tr>
+<tr>
+<td>image</td>
+<td>quote-frontend-image</td>
+</tr>
+<tr>
+<td>Event-header</td>
+<td>demo</td>
+</tr>
+<tr>
+<td>Service Account</td>
+<td>kabanero-operator</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image36.png" /></p>
+</blockquote>
+<p>d) The pipelinerun is created, click the its link to view the run status:</p>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc21/media/image37.png" /></p>
+<p>e) The pipeline is running. It has several tasks, including  <strong>build-push</strong>, <strong>image scan</strong> and <strong>deploy</strong>. Each task contains multiple stages. When the stage is running, you can click its link and <strong>view its logs</strong>, status and details.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc21/media/image38.png" /></p>
+</blockquote>
+<p><strong>When the PipelineRun completes, your application is deployed to OpenShift cluster.</strong></p>
+<p><table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><img src="./itc21/media/image4.png" style="width:1.80625in;height:0.60625in" alt="sign-caution" /></p>
+</blockquote></td>
+<td><blockquote>
+<p>The pipeline will take several minutes to complete all of the tasks. It downloads and installs a lot of pf modules during the <strong>build</strong> phase.</p>
+<p><strong>It took about 15 minutes in my testing!</strong></p>
+<p>Once the Pipeline completes, the final step in the lab is to validate the deployment to OpenShift.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table></p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image39.png" /></p>
+</li>
+<li>
+<p>To verify the deployment to OpenShift</p>
+<p>a) To view your deployment in the OCP cluster, go back to the web  browser window and click the <strong>OpenShift Web Console</strong> bookmark.</p>
+<p><img alt="" src="../itc21/media/image40.png" /></p>
+<p>b) If prompted to login, click the <strong>htpassword</strong> link and login using <strong>admin</strong> / <strong>passw0rd</strong></p>
+<p>c) From the OpenShift Web Console, navigate to <strong>Workloads>Deployments</strong> and go to the <strong>kabanero</strong> project</p>
+<p><img alt="" src="../itc21/media/image41.png" /></p>
+<p>d) Click the <strong>quote-frontend</strong> application link to view its deployment details</p>
+<p><img alt="" src="../itc21/media/image42.png" /></p>
+<p>e) Next, select <strong>Networking>Routes</strong> section and click the <strong>quote-frontend</strong> application URL to lunch it.</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image43.png" /></p>
+<p><strong>The Quote application Web page is displayed, as illustrated below:</strong></p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc21/media/image44.png" /></p>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="summary">Summary</h2>
+<p>In this lab, you have learned how to create a cloud native microservice
+application using customized Application Stacks provided by Cloud Pak
+for Applications. These stacks are built using an open source project
+called Appsody. You can learned how to use the CLI provided by Appsody
+to create projects, do iterative local development and deploy
+applications to OpenShift Pipelines provided with Cloud Pak for
+Applications.</p>
+<p>IBM <strong>Cloud Pak for Application</strong>s makes it faster and easier for
+developers to create and deploy cloud native applications on OpenShift
+using Application Stacks that also provide enterprise governance for
+cloud native development.</p>
+<p><br></p>
+<h3 id="congratulations">Congratulations!</h3>
+<p>You have successfully completed the lab “Create and Deploy a cloud native application to IBM Cloud Pak for Applications”.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

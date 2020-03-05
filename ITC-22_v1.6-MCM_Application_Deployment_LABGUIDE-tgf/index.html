@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>***Session ID: ITC-22*** - Tech Con 2020 (Dallas)</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "***Session ID: ITC-22***";
+    var mkdocs_page_input_path = "ITC-22_v1.6-MCM_Application_Deployment_LABGUIDE-tgf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Tech Con 2020 (Dallas)</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../appmod/">Application Modernization Lab Guides</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Tech Con 2020 (Dallas)</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>***Session ID: ITC-22***</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="session-id-itc-22"><strong><em>Session ID: ITC-22</em></strong></h1>
+<h1 id="how-to-create-policy-driven-application-placement-with-ibm-multicloud-manager"><strong><em>How to create policy driven application placement with IBM Multicloud manager</em></strong></h1>
+<h2 id="lab-enable-and-deploy-applications-with-policy-enforcement"><strong>Lab. Enable and Deploy Applications with Policy Enforcement</strong></h2>
+<p>On the journey to cloud, enterprise customers are deploying multiple
+Kubernetes clusters and OpenShift clusters. As the number of clusters
+increase, it will be difficult to deploy and manage the applications
+across all these clusters. Enabling the applications to deploy to
+various Kubernetes/OpenShift clusters meeting certain criteria will
+ensure management of the life cycle of the applications.</p>
+<p>To achieve this, all the applications which are packaged as helm charts
+will be hosted in one or more repositories. The repositories, which
+contain the application packages are defined as channels which broadcast
+across the clusters which are managed. Now, if you want to deploy an
+application, then you define a subscription to the channel with the name
+of the application (one or more) you want to deploy. This is similar to
+the subscription model of TV channels.</p>
+<p><img alt="Graphic" src="../itc22/media/image2.png" /></p>
+<p>Here is a schematic describing how we now subscribe to a channel which
+has connected content. Much like a TV broadcast model where households
+subscribe to different channels for different content streams.
+Schematically the diagram below describes the process.</p>
+<p><img alt="Graphic" src="../itc22/media/image3.png" /></p>
+<p>This lab walks you through the process of how to define channels
+(namespace or helm repositories) and then subscribe to the channels to
+deploy the applications across multiple clusters depending on the
+subscription and placement policies.</p>
+<p><br></p>
+<h2 id="objective">Objective</h2>
+<p>The objectives of this lab are to:</p>
+<ul>
+<li>Learn how to define channels for the repositories holding
+    application packages </li>
+<li>Learn how to subscribe to the channel to deploy an application</li>
+<li>Change the placement policy rule and validate the policy is enforced</li>
+<li>Learn CLI commands that are useful to gain insights into the state of the MCM application</li>
+</ul>
+<p><br></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following prerequisites must be completed prior to beginning this lab:</p>
+<ul>
+<li>Familiarity with basic Linux commands, Kubernetes commands, helm charts and YAML.</li>
+<li>Concepts of management of Multicloud Management (managing multiple Kubernetes clusters)</li>
+<li>A Management Cluster is available and ready to use.</li>
+<li>An OpenShift cluster that needs to be managed</li>
+</ul>
+<p>The following symbols appear in this document at places where additional
+guidance is available.</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Purpose</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc22/media/image4.png" /></td>
+<td>Important!</td>
+<td><strong>This symbol calls attention to a particular step or command. For example, it might alert you to type a command carefully because it is case sensitive.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-info" src="../itc22/media/image5.png" /></td>
+<td>Information</td>
+<td><strong>This symbol indicates useful information that is good to know.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-troubleshooting" src="../itc22/media/image6.png" /></td>
+<td><strong>Trouble-shooting</strong></td>
+<td><strong>This symbol indicates that you can fix a specific problem by completing the associated troubleshooting information.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="what-is-already-completed">What is Already Completed</h2>
+<p>Two OpenShift Clusters pre-deployed where one cluster acts as Management
+Cluster and other acts as managed cluster.</p>
+<ul>
+<li>
+<p>On the management cluster, the management software is loaded.</p>
+</li>
+<li>
+<p>The VMs with names (<strong>master1, worker1, worker2</strong>) are part of
+    management cluster. It’s an Openshift 4.2 cluster.</p>
+</li>
+<li>
+<p>The VMs with names <strong>OCP</strong> constitute the managed cluster. It’s an
+    Openshift 3.11 all-in-one cluster.</p>
+</li>
+</ul>
+<p><img alt="" src="../itc22/media/image7.png" /></p>
+<ul>
+<li>The <strong>Developer</strong> VM is the one you will use to access and work with
+    in this lab.</li>
+<li>
+<p>The <strong>DNS VM</strong> works to support management cluster and cross-cluster
+    DNS.</p>
+<p><strong>The login credentials for the </strong>Developer<strong> VM are:</strong></p>
+<pre><code>User ID: ibmuser
+
+Password: passw0rd   (this is the same sudo password)
+</code></pre>
+<p><br> </p>
+</li>
+</ul>
+<h2 id="lab-tasks">Lab Tasks</h2>
+<p>During this lab, you will complete the following tasks:</p>
+<ul>
+<li>Log in to the Cluster to ensure they are operational</li>
+<li>Define a channel definition (namespace based, and helm chart based) so that subscribers can pull the applications</li>
+<li>Subscribe to the channel</li>
+<li>Verify the application is deployed successfully, and test the
+    application</li>
+<li>Modify the placement policy to automatically deploy the application to an alternative managed cluster</li>
+<li>Explore some useful CLI commands to determine state of the
+    application and MCM resources</li>
+</ul>
+<p><br></p>
+<h2 id="check-the-environment">Check the Environment</h2>
+<h3 id="log-in-to-the-workstation-vm-and-get-started"><strong>Log in to the Workstation VM and get started</strong></h3>
+<ol>
+<li>
+<p>If the VMs are <strong><span class="underline">NOT</span></strong> already
+    running, launch the lab VMs by clicking the <strong>Play</strong> button
+    highlighted in the illustration of VMs above.</p>
+</li>
+<li>
+<p>After the VMs are started (takes few minutes), click the
+    <strong>Developer</strong> VM icon to access it. The <strong>Developer</strong> <strong>Linux
+    Desktop</strong> is displayed. You will execute all the lab tasks on this
+    VM.</p>
+</li>
+</ol>
+<h3 id="check-the-environment_1"><strong>Check the Environment</strong></h3>
+<p>In this task, let’s check the Management environment to ensure it is up
+and its pods are all running.</p>
+<p>To check the environment, login to the “<strong>Developer</strong>” VM using userid:
+<strong>ibmuser</strong> and password: <strong>passw0rd</strong>. The workstation has the required
+tools <strong>oc</strong>, <strong>cloudctl</strong> and <strong>helm</strong> tools installed.</p>
+<ol>
+<li>
+<p>Launch a terminal window and login to Management OpenShift Cluster.</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>Verify all of the management pods are running in the Management cluster</p>
+<pre><code>oc get pods -n kube-system |grep -v Running|grep -v Completed
+
+oc get pods -n multicluster-endpoint | grep -v Running|grep -v Completed
+</code></pre>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc22/media/image4.png" style="width:1.21458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p>There should <strong>NOT</strong> be any pods listed in the results. That indicates all the pods are in the Running state.</p>
+<p>If there are pods listed, and not running, contact the instructor, as the management cluster may not be running correctly.</p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Get the route for the Multicloud Management Console (Named
+    <strong>icp-console</strong>)</p>
+<pre><code>oc -n kube-system get routes
+</code></pre>
+<p>a) Select the value of <strong>icp-console.apps.demo.ibmdte.net</strong> like highlighted below</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image8.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Launch a browser and log in to the <strong>Mutlicloud Management Console</strong></p>
+<p>URL: <a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome">https://icp-console.apps.demo.ibmdte.net/multicloud/welcome</a></p>
+<pre><code>Lognin using the following credentials:
+
+  userid: admin
+  password: passw0rd
+</code></pre>
+</li>
+<li>
+<p>The console, welcome page should be displayed (<strong>read below, if you do not get this page</strong>)</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically
+generated" src="../itc22/media/image9.png" /></p>
+</blockquote>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc22/media/image6.png" style="width:0.81458in;height:0.61458in" alt="sign-troubleshooting" /></td>
+<td><p>If you see the incorrect page: “<strong>IBMCloud Pak</strong>” screen, <strong>Rerun</strong> the URL link again.</p>
+<p><strong>This appears to be a bug in our environment</strong></p>
+<p><img src="./itc22/media/image10.png" style="width:4.15648in;height:3.38403in" /></p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Navigate to <strong>Menu -> Observe Environments -> Overview.</strong> This view displays the overall view of all the clusters that are managed.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image11.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>From here, you can navigate to the Clusters, Nodes and the Pods
+    views. As you scroll down, the overall state of the clusters is displayed.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image12.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>In the console, go to <strong>Menu -> Automate infrastructure ->
+    Clusters</strong>. This view shows the managed clusters.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image13.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click the <strong>local-cluster</strong> cluster name to view the details of the cluster. The overview tab displays the details of the cluster and the nodes tab displays the details of nodes with its labels.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image14.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br></p>
+<h2 id="subscription-to-a-namespace-channel">Subscription to a Namespace Channel</h2>
+<p>In this task, you define a <strong>namespace subscription channel</strong> and subscribe to that channel.</p>
+<p>Channels (Channel.app.ibm.com) define a namespace within the hub cluster and point to a physical place where resources are stored for deployment;
+such as an object store, Kubernetes namespace, or Helm repository.</p>
+<p>In this lab, the channel is of type “<strong>namespace</strong>” meaning that the
+yaml you create will be deployed and stored in OpenShift namespaces,
+rather than in a Helm chart or Object store.</p>
+<p>Channels are custom resource definitions that can help you streamline
+deployments and separate cluster access. Clusters can subscribe to
+channels for identifying the deployables to deploy to each cluster.</p>
+<p>Deployables within a channel can be accessed by only the clusters that
+subscribe to that channel.</p>
+<p><strong>You will perform the following tasks in this section</strong></p>
+<ul>
+<li>Define the Modresort application as a channel</li>
+<li>Deploy the channel</li>
+<li>Define the namespace subscription model</li>
+<li>Deploy the subscription</li>
+<li>Check the application</li>
+</ul>
+<p><br> </p>
+<h3 id="define-the-application-as-a-channel"><strong>Define the application as a channel</strong></h3>
+<p>The <strong>modresort</strong> application is a simple application with only one
+component.</p>
+<ul>
+<li>
+<p>Modresort: A WebSphere Liberty Java application - available in
+    Dockerhub at kpostreich/modresort</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image15.png" /></p>
+</blockquote>
+</li>
+</ul>
+<p><br> </p>
+<p><strong>Construct the yaml files for the Channel definition and Deployables for the Modresort application</strong></p>
+<p>In this section, you will create the yaml resources required to
+construct the Channel and Deployables for the modresort application.
+Finally, you will deploy the artifacts and its resources to an MCM managed cluster.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc22/media/image4.png" style="width:1.51458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p><strong>Note:</strong> The yaml files that you will create in this section are also stored in an “Instructor” folder: <strong>/home/ibmuser/instructor/modresortchan</strong></p>
+<p>You can use the snippets below to create the yaml files. Or, you can <strong>copy / paste</strong> the yaml files from the “Instructor” folder. It is your choice.</p></td>
+</tr>
+</tbody>
+</table>
+
+<p>First, we need to create a working directory to create the resource definition files (yaml).</p>
+<ol>
+<li>
+<p>Launch a command window, create a new directory, and then change directory to the new directory:
+    <strong>/home/ibmuser/student/modresortchan</strong></p>
+<pre><code>mkdir -p /home/ibmuser/student/modresortchan
+
+cd /home/ibmuser/student/modresortchan
+</code></pre>
+</li>
+<li>
+<p>In the <strong>modresortchan</strong> folder, use <strong>gedit</strong> or <strong>vi</strong> to create the <strong>channel definition</strong>. Name the file “<strong>channel.yaml”</strong></p>
+<p>The <strong>spec</strong> collection defines the type of the channel. The contents of this file are shown below:</p>
+</li>
+</ol>
+<pre><code> apiVersion: app.ibm.com/v1alpha1
+ kind: Channel
+   metadata:
+     name: modresort-devchan
+     namespace: modresort-entitlement
+  labels:
+    app: modresortchan
+spec:
+  type: Namespace
+  pathname: modresort-entitlement
+</code></pre>
+
+<ul>
+<li>Notice the <strong>spec:type</strong> is “<strong>Namespace</strong>”. The Kubernetes namespace where
+    the channel is deployed will be <strong>“modresort-entitlement”</strong>. You will create this namespace later in the lab, when we deploy the channel definition to that namespace.</li>
+</ul>
+<p><strong>Channels</strong> (Channel.app.ibm.com) define a <strong>namespace</strong> within the <strong>hub cluster</strong> and point to a physical place where resources are stored for deployment. There are three types of channels. Each channel differs based on the type of source location where resources are stored:</p>
+<ul>
+<li>
+<p><strong>Kubernetes namespace</strong>.<br />
+    Uses deployables to store Kubernetes resource templates.
+    Subscription for this type of channel retrieves and deploys the template. The namespaces that the channel monitors for new or updated deployables must be on the hub cluster.</p>
+</li>
+<li>
+<p><strong>Object store</strong>.<br />
+    Stores Kubernetes resource YAML files. Each YAML file includes the template portion for one resource, not the full deployable object.
+    An object store can be populated with a deployable object that is on the hub cluster or directly from a continuous integration pipeline, or by including the required YAML files into the object store.</p>
+</li>
+<li>
+<p><strong>Helm repository</strong>.<br />
+    Stores Helm charts. For information about how to structure your charts, Refer to the on-line documentation for details on the construct of the channel definition:
+    <a href="https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_channels.html">https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_channels.html</a></p>
+</li>
+<li>
+<p>The modresort application component consists of a Kubernetes <strong>deployment resource definition</strong> and a Kubernetes <strong>service resource definition.</strong></p>
+<p>To enable these components to be used by the channel subscription, each of the resources need to be wrapped by a new custom resource definition (CRD) called <strong>Deployable</strong>.
+For the application to properly function with policy enforcement, this CRD is required.</p>
+<p>In the next step, create the Deployable resource for the modresort application.</p>
+</li>
+<li>
+<p>In the <strong>modresortchan</strong> folder, create the <strong>Deployable</strong> file with name <strong>deployable.yaml using the content below:</strong></p>
+</li>
+</ul>
+<pre><code>apiVersion: app.ibm.com/v1alpha1
+kind: Deployable
+metadata:
+  name: devchan-modresortchan-deployment
+  namespace: modresort-entitlement
+  annotations:
+    app.ibm.com/is-local-deployable: &quot;false&quot;
+  labels:
+    app: modresortchan
+    component: main
+    package: modresort
+spec:
+  template:
+    kind: Deployment
+    apiVersion: apps/v1
+    metadata:
+      name: devchan-modresortchan-deployment
+    spec:
+      selector:
+        matchLabels:
+          app: modresortchan
+          release: modresort-devchan
+          tier: frontend
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: modresortchan
+            release: modresort-devchan
+            tier: frontend
+        spec:
+          containers:
+            - name: frontend
+              image: &quot;kpostreich/modresort:1.0&quot;
+              imagePullPolicy: Always
+              ports:
+                - containerPort: 9080
+              env:
+              - name: GET_HOSTS_FROM
+                value: dns
+              - name: WLP_LOGGING_CONSOLE_FORMAT
+                value: json
+              - name: WLP_LOGGING_CONSOLE_LOGLEVEL
+                value: info
+              - name: WLP_LOGGING_CONSOLE_SOURCE
+                value: message,trace,accessLog,ffdc
+---
+apiVersion: app.ibm.com/v1alpha1
+kind: Deployable
+metadata:
+  name: devchan-modresortchan-service
+  namespace: modresort-entitlement
+  annotations:
+    app.ibm.com/is-local-deployable: &quot;false&quot;
+  labels:
+    app: modresortchan
+    component: main
+    package: modresort
+spec:
+  template:
+    kind: Service
+    apiVersion: v1
+    metadata:
+      name: devchan-modresortchan-service
+      labels:
+        app: modresortchan
+        chart: modresortchan-0.1.0
+        release: modresort-devchan
+        heritage: Tiller
+    spec:
+      type: NodePort
+      ports:
+        - port: 9080
+      selector:
+        app: modresortchan
+        release: modresort-devchan
+        tier: frontend
+</code></pre>
+
+<p><strong><span class="underline">Take note of a few elements of the Deployable
+definition:</span></strong></p>
+<ul>
+<li>
+<p>There are two Deployables defined in the yaml file that wrap the
+    modresort Kubernetes resources</p>
+<ul>
+<li>One for the modresort <strong>deployment</strong></li>
+<li>One for the modresort <strong>service</strong></li>
+</ul>
+</li>
+<li>
+<p>The Deployment and Service specs are specific to the Modresort application deployment to an OpenShift Cluster.</p>
+<ul>
+<li>For example, the Deployment refers to the location where the Docker image will be pulled, number of replicas, etc</li>
+<li>For example, the Service refers to the service port, and defines a NodePort for externally accessing the Modresort app in a test environment.</li>
+</ul>
+</li>
+</ul>
+<p>Refer to the on-line documentation for details on the construct of the
+<strong>Deployable</strong> definition:
+<a href="https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_deployables.html">https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_deployables.html</a></p>
+<p><br></p>
+<h2 id="create-a-subscription"><strong>Create a subscription</strong></h2>
+<p>The subscription to a channel package contains
+  - Application Definition
+  - Placement Rules Definition
+  - Subscription Definition</p>
+<p><strong>Applications</strong> (Application.app.k8s.io) in IBM Multicloud Manager are used for grouping application components.</p>
+<p><strong>Placement rules</strong> (PlacementRule.app.ibm.com) define the target clusters where deployables can be deployed. You can use placement rules to help you facilitate the multi-cluster deployment of your deployables.
+Placement rules can be referenced by deployables and subscriptions.</p>
+<p><strong>Subscriptions</strong> (Subscription.app.ibm.com) are sets of definitions that identify deployables within channels by using annotations, labels, and versions.</p>
+<p>The subscription controller can monitor the channel for new or updated deployables, such as an updated Helm release or new Kubernetes deployable object. Then, the controller can download the Kubernetes deployable object or Helm release directly from the source location (Helm repository, object store, or namespace) to the target managed clusters.</p>
+<h3 id="create-the-resources-for-application-placementrule-and-subscription">Create the resources for “Application”, “PlacementRule”, and “Subscription”</h3>
+<p>You will create these additional yaml resources for the application in a new folder for the application resources. They will also be deployed to a separate namespace than the Channel and Deployable resources.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><img src="./itc22/media/image4.png" style="width:2.21458in;height:0.61458in" alt="sign-caution" /></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>Note:</strong> The yaml files that you will create in this section are also stored in an <strong>“Instructor”</strong> folder: <strong>/home/ibmuser/instructor/modresortapp</strong></p>
+<p>You can use the snippets below to create the yaml files. Or, you can <strong>copy / paste</strong> the yaml files from the “Instructor” folder. It is your choice.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Create a new directory for your application <strong>modresortapp</strong>, and change to the new directory: <strong>/home/ibmuser/student/modresortapp</strong></p>
+<pre><code>mkdir /home/ibmuser/student/modresortapp
+
+cd /home/ibmuser/student/modresortapp
+</code></pre>
+</li>
+<li>
+<p>Create the <strong>application.yaml</strong> which defines the grouping of the application components.</p>
+<p>Notice the resource kind is “Application”, and the Component kinds is a “Subscription”.</p>
+</li>
+</ol>
+<pre><code>apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: modresort101-modresortapp
+  namespace: modresort-project
+  labels:
+    app: modresortapp
+spec:
+  selector:
+    matchExpressions:
+    - key: release
+      operator: In
+      values:
+      - modresort101
+  componentKinds:
+  - group: app.ibm.com
+    kind: Subscription
+</code></pre>
+
+<p>Refer to the on-line documentation for details on configuring the Application resource:</p>
+<p>https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/app_lifecycle.html&gt;</p>
+<ol>
+<li>Create <strong>placementrules.yaml</strong> file.</li>
+</ol>
+<p>This contains the definition for placement of the components as selected by the user. In the definition you will find placement rule for the modresort component.</p>
+<p>The selection criteria for where the application will be deployed is based on the “<strong>environment</strong>” cluster label.</p>
+<p>The value of “<strong>Dev</strong>” means the Modresort app will be deployed to the local cluster. </p>
+<p>A value of “<strong>Prod</strong>” for the environment label, will result in the Modresort application being deployed to the managed cluster (OCP).</p>
+<pre><code>apiVersion: app.ibm.com/v1alpha1
+kind: PlacementRule
+metadata:
+  name: modresortapp101-modresortapp
+  namespace: modresort-project
+  labels:
+    app: modresortapp
+    release: modresort101
+spec:
+  clusterReplicas: 1
+  clusterLabels:
+    matchLabels:  
+      environment: Prod
+</code></pre>
+
+<p>Refer to the on-line documentation for details on configuring the PlacementRule resource:</p>
+<p><a href="https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_placement_rules.html">https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_placement_rules.html</a></p>
+<ol>
+<li>
+<p>Create <strong>subscription.yaml</strong> file.</p>
+<p>This contains the details for relating the placement rule definition with the application specification.</p>
+<ul>
+<li>
+<p>In the definition file, there is a <strong>subscription</strong> definition for
+the modresort application component, which references the modresort
+application <strong>channel</strong>.</p>
+</li>
+<li>
+<p>Through this subscription, the modresort application will be
+deployed to the cluster based on the <strong>placement rule</strong> that is
+referenced here in the <strong>subscription</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>apiVersion: app.ibm.com/v1alpha1
+kind: Subscription
+metadata:
+  name: modresort101-modresortapp
+  namespace: modresort-project
+  labels:
+    app: modresortapp
+    release: modresort101
+spec:
+  channel: modresort-entitlement/modresort-devchan
+  name: &quot;&quot;
+  packageFilter:
+    version: &quot;&gt;=1.x&quot;
+    labelSelector:
+      matchLabels:
+        package: modresort
+        component: main
+  placement:
+    placementRef:
+      name: modresortapp101-modresortapp
+      kind: PlacementRule
+      group: app.ibm.com
+  overrides:
+  - clusterName: &quot;/&quot;
+    clusterOverrides:
+    - path: &quot;metadata.namespace&quot;
+      value: default
+</code></pre>
+
+<p>Refer to the on-line documentation for details on configuring the Subscription resource:</p>
+<p><a href="https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_subscriptions.html">https://www.ibm.com/support/knowledgecenter/en/SSFC4F_1.2.0/mcm/applications/managing_subscriptions.html</a></p>
+<p>This completes enabling an existing application with policies so that they can be deployed to any Kubernetes managed cluster via MCM placement policies.</p>
+<p><br></p>
+<h2 id="deploy-the-application-that-is-built"><strong>Deploy the application that is built</strong></h2>
+<p>In this section, you will deploy the application components to their respective Kubernetes namespaces, using the yaml files that you created in the previous steps.</p>
+<ol>
+<li>
+<p>Launch the command window and log in to the <strong>hub</strong> OpenShift cluster.</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>Use the icp-console URL to login to the Multicloud Management console CLI</p>
+<pre><code>cloudctl login -a https://icp-console.apps.demo.ibmdte.net/ -u admin -p passw0rd -n default
+</code></pre>
+<p><img alt="" src="../itc22/media/image16.png" /></p>
+</li>
+<li>
+<p>As the channel is <strong>namespace</strong> based, create two namespaces (projects in OpenShift) where one is for the <strong>subscription</strong> and the other is for the <strong>channel</strong>. Run the following commands to create the projects in OpenShift</p>
+<pre><code>oc new-project modresort-project
+
+oc new-project modresort-entitlement
+</code></pre>
+</li>
+<li>
+<p>Deploy the <strong>modresortchan</strong> application (channel definition) to the <strong>modresort</strong>-<strong>entitlement</strong> project</p>
+<pre><code>oc project modresort-entitlement
+
+   OUTPUT: Already on project "modresort-entitlement" on server "https://api.demo.ibmdte.net:6443"
+
+cd /home/ibmuser/student
+
+oc apply -f modresortchan
+</code></pre>
+<p>Output of the above command will be similar to the illustration below.
+The output shows that <strong>Channel</strong> and <strong>Deployables</strong> are created</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image17.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Now deploy the <strong>subscription</strong> to the “<strong>modresort-project”</strong>
+    namespace.</p>
+<p>The subscription is deployed to a different namespace than the  channel. Never deploy the subscription to the same namespace as the channel. Hence, deploy the subscription to the other namespace,  <strong>modresort</strong>-<strong>project</strong></p>
+<pre><code>oc project modresort-project
+
+    OUTPUT: Now using project "modresort-project" on server "https://api.demo.ibmdte.net:6443"
+
+oc apply -f modresortapp
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image18.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br></p>
+<p><strong>Continue to the next section of the lab, which walks you through validating the application deployment.</strong></p>
+<p><br></p>
+<h2 id="validate-the-application"><strong>Validate the Application</strong></h2>
+<p>As the channel and the subscription are deployed, now you can validate if the application is running. </p>
+<ol>
+<li>
+<p>Go to the console: <a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome">https://icp-console.apps.demo.ibmdte.net/multicloud/welcome</a> using username: <strong>admin</strong> and password: <strong>passw0rd</strong></p>
+</li>
+<li>
+<p>Check the "Applications view:" <strong>menu -> Manage Applications.</strong> You should see the <strong>application listed</strong>.</p>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc22/media/image5.png" style="width:0.61458in;height:0.61458in" alt="sign-info" /></td>
+<td><p><strong>Note:</strong> It may take a couple of moments for the application to be available.</p>
+<p>Be patient and refresh the page until the application is displayed in the UI.</p></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><img alt="" src="../itc22/media/image19.png" /></p>
+</blockquote>
+<ol>
+<li>
+<p>Click on the <strong>modresort101-modresortapp</strong> application link to get to the application <strong>Overview</strong> page.</p>
+<p>a) Then, scroll down to view the <strong>application diagram</strong></p>
+</li>
+<li>
+<p>You will see the <strong>Resource Topology</strong> for the modresort
+    application.</p>
+<p><strong>Note:</strong> It may take a couple of minutes for the application to &gt; deploy to the cluster.</p>
+<p>When the application is successfully deployed, via the subscription, the pod <img alt="" src="../itc22/media/image20.png" /> in the application topology view will have a GREEN icon, as illustrated below.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image21.png" /></p>
+</blockquote>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc22/media/image4.png" /></td>
+<td><strong>Note:</strong> After a couple of minutes, if your pod has a <strong>YELLOW</strong> icon next to the pod, indicating it is in an unknown state, you will need to troubleshoot your yaml files for correctness, and redeploy the resources.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>Check your subscriptions to verify they are subscribed and propagated</p>
+<pre><code>oc get subscription.app.ibm.com --all-namespaces
+</code></pre>
+<p>The subscription from the <strong>mcm hub</strong> should be in the “<strong>Propagated”</strong> state.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image22.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Check your subscription on the ‘<strong>ocp’</strong> node (Prod) cluster to verify the subscription in in the <strong>subscribed</strong>” state.</p>
+<p>a) Open a <strong>new</strong> terminal window</p>
+<p>b) ssh into the <strong>ocp</strong> node using the credentials <strong>ibmuser</strong> / <strong>passw0rd</strong></p>
+<pre><code>ssh ocp -l ibmuser
+
+      when prompted for the password enter: passw0rd
+</code></pre>
+<p>c) Login to the <strong>OCP</strong> cluster (This is the <strong>Prod</strong> cluster)</p>
+<pre><code>oc login -u admin -p passw0rd https://ocp.demo.ibmdte.net:8443
+</code></pre>
+<p>d)  Check the status of the subscription in the “<strong>default</strong>” namespace in the OCP cluster.</p>
+<p><strong>Note:</strong> The subscription.yaml file you created earlier defined the namespace for the Modresort application to be the “<strong>default</strong>” namespace in the target cluster.</p>
+<pre><code>oc get subscription.app.ibm.com -n default
+</code></pre>
+<p>The subscription in “<strong>default</strong>” namespace should be in the
+ “<strong>Subscribed</strong>” state</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image23.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Check the modresort pod state in the “<strong>default</strong>” namespace in the OCP cluster</p>
+<pre><code>oc get pods -n default
+</code></pre>
+<p>You should see the <strong>devchan-modresort-deployment</strong> pod running in the “<strong>default</strong>” namespace</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image24.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Test the modresorts application from the browser</p>
+<p><strong>Note:</strong> Ensure you run the following command from the <strong>OCP</strong> ssh terminal window</p>
+<p>a) Use the “oc get services -n default” command to get the <strong>devchan-modresortchan-service</strong> NodePort.</p>
+<pre><code>oc get services -n default
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image25.png" /></p>
+</blockquote>
+<p>b) From a browser: http://10.0.0.10:\&lt;NodePort>/resorts</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image26.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Type “<strong>exit</strong>” to exit from the ssh of the OCP cluster</p>
+</li>
+<li>
+<p><strong>Close</strong> the 2<sup>nd</sup> terminal window where you connected via ssh to the OCP cluster</p>
+</li>
+</ol>
+<p><strong>Congratulations!</strong> You have successfully deployed the modresorts application to the local OpenShift Cluster, using the MCM subscription based “Placementrule” deployment model.</p>
+<p><br></p>
+<h2 id="explore-some-valuable-cli-commands-to-view-the-state-of-the-deployed-resources"><strong>Explore some valuable cli commands to view the state of the deployed resources</strong></h2>
+<p>Using the cli, you can check quite a few things about the deployed resources</p>
+<ol>
+<li>
+<p>Ensure you are logged into to the <strong>hub</strong> openshift cluster.</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>Using the cli, check the placementrules using the “get
+    placementrules” command:</p>
+<pre><code>oc get placementrules --all-namespaces
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image27.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Check where the subscription landed, in the <strong>status</strong> section of the output from the following command:</p>
+<pre><code>oc get placementrules modresortapp101-modresortapp -n modresort-project -o yaml
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image28.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Enter the command below to check all the <strong>deployables</strong>. Then you can check the deployables for any errors by using oc logs…. And oc describe commands as needed for troubleshooting.</p>
+<pre><code>oc get deployables.app.ibm.com --all-namespaces
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image29.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Command to check the registered clusters</p>
+<pre><code>oc get **cluster**s.**cluster**registry.k8s.io --all-namespaces
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc22/media/image30.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Similarly, to check any resource, you can use <strong>oc api-resources</strong> to display all the resources and use any resource. For example:</p>
+<pre><code>oc api-resources | grep deployable
+</code></pre>
+<p><img src="./itc22/media/image31.png" style="width:7.1in;height:0.25764in" /></p>
+<p>From the above example, to get deployables, you specify the resource including its <strong>APIGROUP</strong> as illustrated below:</p>
+<pre><code>oc get deployables.app.ibm.com --all-namespaces
+</code></pre>
+</li>
+<li>
+<p>Here is the example and output from getting the MCM Application resources</p>
+<pre><code>oc api-resources | grep application
+</code></pre>
+<p><img src="./itc22/media/image32.png" style="width:7.1in;height:0.35in" /></p>
+<p>From the above example, to get deployables, you specify the resource including its full API resource name, as illustrated below:</p>
+<pre><code>oc get applications.app.k8s.io --all-namespaces
+</code></pre>
+<p><img src="./itc22/media/image33.png" style="width:7.1in;height:0.59306in" /></p>
+</li>
+</ol>
+<p><strong>Congratulations!</strong> You are now familiar with several important MCM specific CLI commands that can help you gain insights into the state of your MCM managed applications.</p>
+<p><br> </p>
+<h2 id="modify-placement-rules-to-move-the-application-to-the-dev-managed-cluster">Modify placement rules to move the application to the "dev" managed cluster</h2>
+<p>The previous portions of the lab deployed the modresort application to the managed cluster labeled as “<strong>Prod</strong>”. You can work with the placement rule to see how MCM can easily redeploy the application to a different cluster based on selection criteria in the placement rule.</p>
+<p>In this section, you will modify the placement rule to redeploy the modresort application to the local cluster, labeled <strong>Dev</strong>”.</p>
+<p>From the MCM clusters view in the MCM Hub console, you can see all the labels the admin set on the managed clusters.</p>
+<p>These are the labels on the two managed clusters in the lab
+environment. Notice the <strong>environment</strong> label. That is what you defined in the placement rule to deploy the application to the “Prod” cluster.</p>
+<p>The environment label for the local managed cluster is
+ <strong>environment=Dev</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Dev Cluster</strong></th>
+<th><strong>Prod Cluster</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../itc22/media/image34.png" /></td>
+<td><img alt="" src="../itc22/media/image35.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="modify-placement-rules-to-deploy-modresorts-to-the-dev-managed-cluster">Modify Placement Rules to deploy modresorts to the "Dev" managed cluster</h3>
+<ol>
+<li>
+<p>Return to the <strong>Mutlicloud Management Console</strong> in the Browser. If you closed the console, you can login again using the URL and credentials below.</p>
+<p><table>
+<tbody>
+<tr class="odd">
+<td><p>URL: <a href="https://icp-console.apps.demo.ibmdte.net">https://icp-console.apps.demo.ibmdte.net</a></p>
+<blockquote>
+<p>userid: ibmuser</p>
+<p>password: passw0rd</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table></p>
+</li>
+<li>
+<p>From the menu, navigate to the “<strong>Manage</strong> <strong>Applications”</strong> view, where you will see the <strong>modresort</strong> application listed</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image19.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click on the <strong>modresort101-modresortapp</strong> in the list.</p>
+</li>
+<li>
+<p>From the application <strong>Overview</strong> page, scroll down to the <strong>Resource</strong> <strong>Topology</strong> section</p>
+</li>
+<li>
+<p>You can edit the placement policy using the <strong>Edit Topology</strong> link located in the lower right corner, and then clicking on the <strong>placement rules icon</strong> <img alt="" src="../itc22/media/image36.png" />as illustrated below.</p>
+<p>a)  Click on the <strong>Edit Topology</strong> link to view the yaml file.</p>
+<p>b)  Click on the <strong>Placement Rules</strong> icon, which will take you directly to the placement rules section of the yaml file.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image37.png" /></p>
+</blockquote>
+<p>c) Place curser on edge of the Editor view, and drag it left, widening the view area.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image38.png" /></p>
+</blockquote>
+<p>d) Notice the Modresort application is currently deployed to the cluster labeled as “<strong>Prod</strong>”.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image39.png" /></p>
+</blockquote>
+<p>e)  In the Yaml view, on approximately line #60, modify the environment from Prod to <strong>Dev</strong></p>
+<p><strong>Note:</strong> Case Matters – Upper case “D”</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image40.png" /></p>
+</blockquote>
+<p>f)  Click the Update icon <img alt="" src="../itc22/media/image41.png" /> to save the changes to the yaml</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image42.png" /></p>
+</blockquote>
+<p>g)  Click the <strong>Close editor</strong> link to close the yaml editor</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image43.png" /></p>
+</blockquote>
+<p>h)  After a couple of minutes, the modresort application will be redeployed to the “<strong>Dev</strong>” managed cluster.</p>
+</li>
+<li>
+<p>Refresh the <strong>application view</strong>, then verify the Resource Topology section shows that application now deployed to “<strong>Dev</strong>”, which is the <strong>local-cluster</strong> cluster.</p>
+<p>a) The pod, once redeployed to the local cluster, will show in the running state, indicated by a <strong>green</strong> icon, as illustrated below: </p>
+<p>It may take a couple of minutes for the application to be
+redeployed to the local cluster.</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image44.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Login to the local cluster CLI (hub cluster) to run <strong>oc</strong> commands to verify the application state.</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>You can use the following command to see if the modresort pod got deployed and its current state of the pod and subscription, and placement rules</p>
+<pre><code>oc get pods -n default
+
+oc get subscription.app.ibm.com -n default&lt;/p&gt;
+
+oc get placementrules modresortapp101-modresortapp -n modresort-project -o yaml
+</code></pre>
+<p><strong>Note:</strong> Output from the above commands are illustrated below:</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image45.png" /></p>
+<p><img alt="" src="../itc22/media/image46.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Test the modresorts application from the browser</p>
+<p>a)  Use the <strong>oc get services -n default</strong> command to get the <strong>devchan-modresortchan-service</strong> NodePort.</p>
+<pre><code>oc get services -n default
+</code></pre>
+</li>
+<li>
+<p>From a browser:
+    <a href="http://10.0.0.4:%3cNodePort%3e/resorts">http://10.0.0.4:\&lt;NodePort>/resorts</a></p>
+<p><strong>Note:</strong> 10.0.0.4 is the “Master” node of the <strong>local-cluster</strong> cluster (Dev)</p>
+<blockquote>
+<p><img alt="" src="../itc22/media/image47.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><strong>Congratulations!</strong> You have successfully re-deployed the modresorts application to the “Prod” managed OpenShift Cluster, using the MCM subscription based “Placementrule” deployment model.</p>
+<h2 id="9-summary">9 Summary</h2>
+<p>In this lab, you have learned how to enable an existing application definition with channel definition, subscription and placement rules.</p>
+<p><strong>Congratulations! You have successfully completed the lab “Application
+Deployment”</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

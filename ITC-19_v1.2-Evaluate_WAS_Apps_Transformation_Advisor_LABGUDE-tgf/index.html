@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>**ITC-19** - Tech Con 2020 (Dallas)</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "**ITC-19**";
+    var mkdocs_page_input_path = "ITC-19_v1.2-Evaluate_WAS_Apps_Transformation_Advisor_LABGUDE-tgf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Tech Con 2020 (Dallas)</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../appmod/">Application Modernization Lab Guides</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Tech Con 2020 (Dallas)</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>**ITC-19**</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="itc-19"><strong>ITC-19</strong></h1>
+<h1 id="evaluate-java-application-with-ibm-cloud-transformation-advisor"><strong>Evaluate Java Application with IBM Cloud Transformation Advisor</strong></h1>
+<p><strong>Modernizing WebSphere / Java applications for Cloud and Containers</strong></p>
+<p><br></p>
+<h2 id="lab-evaluate-on-premises-java-applications-with-ibm-cloud-transformation-advisor">Lab:  Evaluate On-Premises Java Applications with IBM Cloud Transformation Advisor</h2>
+<p>On the journey to cloud, enterprise customers are facing challenges
+moving their existing on-premises applications to cloud quickly and
+cost-effectively. The I<strong>BM</strong> <strong>Cloud Pak for Applications</strong> provides a complete and consistent experience and solution to modernize enterprise applications for cloud-native deployments. Customers can easily modernize their existing applications with IBM’s integrated tools and develop new cloud-native applications faster for deployment on any cloud. One of the tools included in the Pak is the IBM Cloud
+Transformation Advisor (<strong>Transformation Advisor</strong>), a developer tool
+that is available at no charge to help you quickly evaluate on-premises Java EE applications for deployment to the cloud.</p>
+<p><strong>The Transformation Advisor tool can</strong></p>
+<ul>
+<li>identify the Java EE programming models in the app.</li>
+<li>determine the complexity of apps by listing a high-level inventory
+    of the content and structure of each app.</li>
+<li>highlight Java EE programming model and WebSphere API differences
+    between the WebSphere profile types</li>
+<li>learn any Java EE specification implementation differences that
+    might affect the app</li>
+</ul>
+<p>Additionally, the tool provides a recommendation for the right-fit IBM
+WebSphere Application Server edition and offers advice, best practices
+and potential solutions to assess the ease of moving apps to Liberty or newer versions of WebSphere traditional. It will accelerate application migrating to cloud process, minimize errors and risks and reduce time to market.</p>
+<p>This lab is a part of the Application Modernization lab series which
+focus on the evaluation, re-platform, repackage, and refactor
+modernization approaches and solutions.</p>
+<p>This lab covers the evaluation process. It will show the value of using <strong>Transformation Advisor</strong> to evaluate on-premises Java applications and identify a migration candidate for moving to the cloud. When you complete this lab, you will learn how to use this tool to quickly analyze on-premise Java applications without accessing their source code and to estimate the move to cloud efforts.</p>
+<p><br></p>
+<h2 id="business-scenario">Business Scenario</h2>
+<p>As shown in the image below, your company has several web applications
+deployed to WebSphere Application Server (<strong>WAS</strong>) environment.</p>
+<p><img alt="" src="../itc19/media/image2.png" /></p>
+<p>Your company wants to move these applications to a lightweight WebSphere Liberty server on cloud, but you are not sure how much effort the migration process might take.</p>
+<p>You decide to use the <strong>Transformation Advisor</strong> to do a quick
+evaluation of these apps without their source code (Binary Scan using
+TA) to identify a good candidate application to move to cloud based on
+the analysis results.</p>
+<p><br></p>
+<h2 id="objective">Objective</h2>
+<p>The objectives of this lab are to:</p>
+<ul>
+<li>learn how to collect Java application and configuration data using
+    the <strong>Transformation Advisor</strong> Data Collector tool.</li>
+<li>learn how to use the Transformation Advisor to evaluate the move to cloud efforts and to identify the good candidate for migration.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following prerequisites must be completed prior to beginning this
+lab:</p>
+<ul>
+<li>Familiarity with basic Linux commands</li>
+<li>Have internet access</li>
+<li>Have basic Java app development knowledge.</li>
+</ul>
+<p>The following symbols appear in this document at places where additional guidance is available.</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Purpose</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc19/media/image3.png" /></td>
+<td>Important!</td>
+<td><strong>This symbol calls attention to a particular step or command. For example, it might alert you to type a command carefully because it is case sensitive.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-info" src="../itc19/media/image4.png" /></td>
+<td>Information</td>
+<td><strong>This symbol indicates information that might not be necessary to complete a step, but is helpful or good to know.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-troubleshooting" src="../itc19/media/image5.png" /></td>
+<td><strong>Trouble-shooting</strong></td>
+<td><strong>This symbol indicates that you can fix a specific problem by completing the associated troubleshooting information.</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-is-already-completed">What is Already Completed</h2>
+<p>Four (4) Linux VMs have been provided for this lab.</p>
+<p><img alt="" src="../itc19/media/image6.png" /></p>
+<ul>
+<li>
+<p>The OpenShift Container Platform, <strong>OCP v4.2</strong>, included with
+    <strong>Cloud Pak for Applications</strong>, is installed in four VMs, the
+    <strong>master1</strong> VM, the <strong>dns</strong> VM, the <strong>worker1</strong> VM, with one master node and one compute node.</p>
+</li>
+<li>
+<p>A local version of <strong>IBM Cloud</strong> <strong>Transformation Advisor</strong>, running on Docker container is used for this lab.</p>
+<blockquote>
+<p>The <strong>Transformation Advisor</strong> can be deployed to the <strong>RHOCP</strong>
+cluster as a part of <strong>IBM Cloud Pak for Applications</strong> installation.
+It also can be installed as a stand-alone local application.</p>
+<p>For more information on how to install a local version of the
+<strong>Transformation Advisor</strong>, please visit:
+<a href="https://www.ibm.com/cloud/architecture/tutorials/install-ibm-transformation-advisor-local">https://www.ibm.com/cloud/architecture/tutorials/install-ibm-transformation-advisor-local</a></p>
+</blockquote>
+</li>
+<li>
+<p>The CLI commands used in this lab are listed in the <strong>Commands.txt</strong> file located at the <strong>/home/ibmdemo/cp4a-labs/lab1</strong> directory of the <strong>Workstation</strong> VM. You can use this to <strong>copy / paste</strong> these commands to the Terminal window during this lab.</p>
+</li>
+</ul>
+<p><br></p>
+<p>The <strong>Workstation</strong> VM is the one you will use to access and work with the <strong>OCP cluster</strong> in this lab.</p>
+<p>The <strong>login credentials</strong> for the <strong>Workstation</strong> VM are:</p>
+<pre><code>User ID: ibmdemo
+
+Password: passw0rd
+</code></pre>
+<p><br> </p>
+<h2 id="lab-tasks">Lab Tasks</h2>
+<p>In this lab, you access WebSphere Application Server to review the
+deployment of the JEE applications. Then you are going to the
+Transformation Advisor to identify a good candidate application for
+moving to cloud.</p>
+<p>To identify which Java EE programming models are on the server, you
+could run the Transformation Advisor Data Collector tool against the
+server. The Transformation Advisor creates an inventory of the content
+and structure of each app and learn about problems that might occur if
+you move the app to cloud.</p>
+<p>Finally, you review the analysis reports to determine the complexity of the move-to-cloud efforts and select the migration candidate app.</p>
+<p><strong>Here are the activities involved in this process:</strong></p>
+<ul>
+<li>Log in to WebSphere Application Server to review the deployed JEE
+    applications</li>
+<li>Run the Transformation Advisor Data Collector tool against the
+    WebSphere Application Server to get application data</li>
+<li>Review the analysis reports that Transformation Advisor generates to identify the right candidate application for a rapid and
+    cost-effective migration to cloud</li>
+</ul>
+<p><br></p>
+<h2 id="execute-lab-tasks">Execute Lab Tasks</h2>
+<h3 id="to-get-started-login-to-the-environment">To get started, login to the environment</h3>
+<ol>
+<li>
+<p>Log in to the Workstation VM and Get Started</p>
+<p>a) If he VMs are <strong><span class="underline">not</span></strong> already
+    started, start them by clicking the <strong>Play</strong> button</p>
+<blockquote>
+<p><img alt="A screenshot of a computer Description automatically generated" src="../itc19/media/image7.png" /></p>
+</blockquote>
+<p>b) After the VMs are started, click the <strong>Workstation</strong> VM icon to
+access it.</p>
+<blockquote>
+<p><img src="./itc19/media/image8.png" width="200" height="200"></p>
+</blockquote>
+</li>
+</ol>
+<p>The <strong>Workstation</strong> Linux Desktop is displayed. You will execute all the lab tasks on this VM.</p>
+<p><br> </p>
+<h2 id="review-the-on-prem-websphere-apps"><strong>Review the on-prem WebSphere apps</strong></h2>
+<p>In this task, you will take a look at the sample applications deployed
+to the local WebSphere Application Server (WAS) environment. You are
+going to identify one of them to be the god candidate to move the cloud.</p>
+<ol>
+<li>
+<p>Start WebSphere Application Server, which is running on the
+    Workstation VM. The DB2 database it accesses runs in a Docker
+    container on the VM.</p>
+<p>In the <strong>Workstation</strong> VM, we have a local WebSphere Application
+ Server which hosts several sample applications.</p>
+<p><strong>To start the WAS server:</strong></p>
+<p>a)  Open a terminal window by clicking its icon on the <strong>Workstation</strong>
+VM desktop tool bar.</p>
+<blockquote>
+<p><img src="./itc19/media/image9.png" width="200" height="200"></p>
+</blockquote>
+<p>b)  In the terminal window, issue the command below to start the WAS server (You can <strong><em>copy / paste</em></strong> the command from the
+<strong>Commands.txt</strong> file located at <strong>/home/ibmdemo/cp4a-labs/lab1</strong></p>
+<pre><code>/home/ibmdemo/cp4a-labs/shared/startWAS.sh
+</code></pre>
+<p>when prompted, enter the <strong>sudo</strong> user password as: <strong>passw0rd</strong>.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically  generated" src="../itc19/media/image10.png" /></p>
+</blockquote>
+<p>Within a couple of minutes, the WAS server will be ready.</p>
+</li>
+<li>
+<p>Access the WAS Admin Console to view the application deployed by
+    clicking the web browser icon desktop tool bar to open a browser
+    window.</p>
+<blockquote>
+<p><img src="./itc19/media/image11.png" width="340" height="200"></p>
+</blockquote>
+<p>a)  From the <strong>Web browser</strong>, click <strong>WebSphere Integrated Solution Console</strong> bookmark to launch the WAS console.</p>
+<blockquote>
+<p><img src="./itc19/media/image12.png" width="340" height="200"></p>
+</blockquote>
+<p>b) Login to the WAS Admin Console login page, using the credentials below:</p>
+<pre><code>User: wsadmin
+Password: passw0rd
+</code></pre>
+<p>c) On the WAS Console page, click <strong>Applications</strong> -> <strong>Application   Types</strong> -> <strong>WebSphere enterprise applications</strong> to view the apps
+deployed.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image13.png" /></p>
+</blockquote>
+<p>In the <strong>Enterprise Applications</strong> list, you can see all applications deployed. </p>
+<p>Next we will use Transformation Advisor to analyze these
+applications to identify a good candidate to be moved to the cloud.</p>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="launch-transformation-advisor"><strong>Launch Transformation Advisor</strong></h2>
+<p>The Transformation Advisor can evaluate any Java based applications. In this lab, you are going to use it to evaluate whether the on-premises WebSphere application, <strong>Mod Resorts</strong>, is suitable to move to cloud and what the effort might be to get it there.</p>
+<p>The Transformation Advisor is installed locally on the <strong>Workstation</strong>
+VM. Launch the Transformation Advisor tool using the steps below.</p>
+<ol>
+<li>
+<p>From <strong>Workstation</strong> VM Desktop Tool Bar, click the Terminal icon to open a Terminal window.</p>
+<blockquote>
+<p><img src="./itc19/media/image14.png" width="200" height="200"></p>
+</blockquote>
+</li>
+<li>
+<p>Launch the <strong>Transformation Advisor</strong> with command:</p>
+<pre><code>/home/ibmdemo/ta-local/transformationAdvisor/launchTransformationAdvisor.sh
+</code></pre>
+</li>
+<li>
+<p>Type <strong>5</strong> and press <strong>Enter</strong> to start the <strong>Transformation
+    Advisor</strong>.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically  generated" src="../itc19/media/image15.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>The <strong>Transformation Advisor</strong> application is started, right-click
+    the application URL link and select <strong>Open Link</strong> to launch it in a web browser window.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically  generated" src="../itc19/media/image16.png" /></p>
+</blockquote>
+<p>The <strong>Transformation Advisor</strong> Home page is displayed.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc19/media/image17.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="download-transformation-advisor-data-collector-utility"><strong>Download Transformation Advisor Data Collector utility</strong></h2>
+<p>Now the Transformation Advisor is running, you will use its Data
+Collector utility to get the application data from WebSphere Application Server running on the <strong>Workstation</strong> VM.</p>
+<p>To evaluate on-premises Java applications, you need to run
+<strong>Transformation Advisor</strong> Data Collector utility against the
+Application server environment. It will extract all application
+information from the environment. The utility can be downloaded from the Transformation Advisor web page.</p>
+<ol>
+<li>
+<p>From the Transformation Advisor Home page, Add a <strong>new workspace</strong>
+    by entering the workspace name as <strong>Evaluation</strong> and then clicking
+    <strong>Next</strong>.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image18.png" /></p>
+</blockquote>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image4.png" style="width:2.71458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p> A workspace is a designated area that will house the migration recommendations provided by <strong>Transformation Advisor</strong> from your application server environment. You can name and organize these however you want, whether it’s by business application, location, or teams</p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Enter the collection name as <strong>Server1</strong> and click <strong>Let’s go</strong>.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image19.png" /></p>
+</blockquote>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image4.png" style="width:2.31458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p> Each workspace can be divided into collections for more focused assessment and planning. Like workspaces, collections can be named and organized in whatever way you want.</p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Once the <strong>Workspace</strong> and <strong>Collection</strong> are created, you will have options to either download the Data Collector utility or upload existing data file. In this lab, we ae going to use the Data Collector
+ utility to get the data from the local WebSphere environment.</p>
+<p>a)  Click <strong>Data Collector</strong> to go to the download page.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image20.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>In the Download page, you can download different versions of the
+    utility based on your source operating system. It also shows how to use the command line utility to collect application data from
+    WebSphere, WebLogic and Tomcat servers.</p>
+<p>a) Since the lab VM is a Linux OS, click <strong>Download Linux</strong> to get the utility.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically  generated" src="../itc19/media/image21.png" /></p>
+</blockquote>
+<p>b) In the Download dialog window, select the <strong>Save File</strong> option and click <strong>OK</strong>.</p>
+<blockquote>
+<p><img src="./itc19/media/image22.png" width="400" height="300"></p>
+</blockquote>
+<p>The zipped Data Collector utility file will be saved in /<strong>home/ibmdemo/Downloads</strong> directory of <strong>Workstation</strong> VM.</p>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="run-transformation-advisor-data-collector-utility"><strong>Run Transformation Advisor Data Collector utility</strong></h2>
+<p>After downloading the zipped Data Collector utility, we need to unpack
+it and run the utility against the WAS server to collect all the data of deployed applications and their configuration from the WAS server.</p>
+<ol>
+<li>
+<p>Go back to the terminal window and navigate the <strong>/home/ibmdemo/Downloads</strong> directory and view its contents with commands:</p>
+<pre><code>cd /home/ibmdemo/Downloads/
+
+ls -l
+</code></pre>
+<p>You can see the downloaded data collector utility file saved in the directory.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image23.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Extract the data collector utility with commands:</p>
+<pre><code>tar xvfz transformationadvisor-Linux\_Evaluation\_Server1.tgz
+</code></pre>
+<p>The data collector utility will be extracted to
+<strong><em>/home/ibmdemo/Downloads</em>/transformationadvisor-2.0.2</strong> directory.</p>
+</li>
+<li>
+<p>Execute the <strong>Data Collector</strong> utility with the commands below to
+    start collect the deployed applications information on the WAS
+    server.</p>
+<pre><code>cd /home/ibmdemo/Downloads*/transformationadvisor-2.0.2
+
+sudo ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01 wsadmin passw0rd
+
+    when prompted, enter the sudo password as: passw0rd
+</code></pre>
+</li>
+<li>
+<p>Type <strong>1</strong> to accept the license agreement and press <strong>Enter</strong>, as
+    illustrated below</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image24.png" /></p>
+</blockquote>
+<p><strong>Note:</strong> The utility will start to collect application data.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image25.png" /></p>
+</blockquote>
+<p>This process will take a few minutes to complete, depending on how many applications are deployed on the WAS server. In this lab, it might be a few minutes.</p>
+<p>When the collection utility competes, you will see a message “<strong>Thank  you for uploading your data. You can proceed to the application UI for doing further analysis.”</strong></p>
+<p>Your application data is collected, it is saved as a zip file in
+ directory <strong>/home/ibmdemo/Downloads/transformationadvisor-2.0.2/AppSrv01.zip</strong>, as shown below.</p>
+<blockquote>
+<p><img alt="A close up of text on a screen Description automatically generated" src="../itc19/media/image26.png" /></p>
+</blockquote>
+<p>In general, if your application server and the <strong>Transformation  Advisor</strong> are in the same network infrastructure, the collected data will be automatically uploaded to <strong>Transformation Advisor</strong> for you to view the analysis results.</p>
+<p>Otherwise, you must manually upload the data to <strong>Transformation Advisor</strong> before you can view the results.</p>
+</li>
+</ol>
+<p><br></p>
+<h2 id="evaluate-on-premises-java-applications"><strong>Evaluate On-Premises Java Applications</strong></h2>
+<p>In this section, we are going to use <strong>Transformation Advisor</strong> UI to
+view the application data analysis results.</p>
+<ol>
+<li>
+<p>Go back to <strong>Transformation Advisor</strong> page in web browser, click the <strong>Recommendations</strong> link to the <strong>Recommendations</strong> page.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically  generated" src="../itc19/media/image27.png" /></p>
+</blockquote>
+<p>In the <strong>Recommendations</strong> page, you can see all applications deployed to the WAS server are listed.</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically
+generated" src="../itc19/media/image28.png" /></p>
+</blockquote>
+<p>On the <strong>Recommendations</strong> page, the identified <strong>migration source
+ environment</strong> is shown in the <strong>Profile</strong> section, and the <strong>target
+ environment</strong> is shown in the <strong>Preferred migration</strong> section. </p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image29.png" /></p>
+</blockquote>
+<p>The data collector tool detects that the source environment is your WebSphere Application Server ND <strong>AppSrv01</strong> profile. The target environment is <strong>Liberty on Private Cloud</strong>, which is the default target environment.</p>
+<p>The Recommendations page also shows the <strong>summary analysis results</strong> for all the apps in the <strong>AppSrv01</strong> environment to be moved to a Liberty on Private Cloud environment.</p>
+<p><strong>For each app, you can see these results:</strong>
+- Complexity level
+- Technology match
+- Dependencies
+- Issues
+- Estimated development cost in days</p>
+<p><br></p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image30.png" /></p>
+</blockquote>
+<p>For example, if you want to move the
+ <strong>modresorts-1_0_war.ear</strong> application to Liberty on Private Cloud,
+ the complexity level is <strong>Simple</strong>.</p>
+<p>The Tech match is <strong>100%</strong>, which indicates that the application code <strong>does not need to be changed</strong> before it can be moved to cloud. The application has no dependency, has <strong>1 minor level issue</strong> and the estimated development effort is 0 day.</p>
+<p>As you can see, the default move to cloud environment is <strong>Liberty on Private Cloud</strong>. However <strong>Transformation Advisor</strong> can also provide migration options if you want to migrate your application to different target environments. In this lab we are focusing on identifying a good candidate for moving to the Liberty on Private Cloud environment, so the default target environment will work for us. </p>
+<blockquote>
+<p><img src="./itc19/media/image31.png" width="450" height="300"></p>
+</blockquote>
+<p>If you look at the complexities of these applications, you can see
+ that the <strong>moderesorts-1.0_war.ear</strong> (<strong>Mod Resorts</strong> app) and
+ <strong>pbw-ear.ear</strong> (<strong>PlansByWebSphere</strong> app) has the simple complexity,
+ which mean that these two apps can be migrated to cloud without any
+ code change.</p>
+<p>But since the <strong>moderesorts-1.0_war.ear</strong> app has fewer potential issues (1) than the <strong>pbw-ear.ear</strong> app (4).</p>
+<p>Let’s look at the analysis results for <strong>moderesorts-1.0_war.ear</strong> application in detail.</p>
+</li>
+<li>
+<p>Click the <strong>modresorts-1_0_war.ear</strong> link to expand its analysis
+    results to view the assessment and reports.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image32.png" /></p>
+</blockquote>
+<p>The first section in the detail analysis summary page is the <strong>Overall
+Complexity</strong> section. The overall complexity for the application is
+<strong>simple</strong>, indicating that the application can be directly moved to
+cloud without any code change.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image33.png" /></p>
+</blockquote>
+<p><br></p>
+<p>a) Scroll down to <strong>Application Details</strong> section.</p>
+<p>You can see there is <strong>no code change</strong> required.</p>
+<p>The the estimate migration overhead development cost is 5 days.</p>
+<p>This estimate is based on data from IBM Services engagements,which includes migrating management, server configuration, and testing.</p>
+<p><img alt="" src="../itc19/media/image34.png" /></p>
+</li>
+<li>
+<p>Continue to scroll down to the <strong>Issues</strong> section. You can see the only minor potential issue listed is on configuring the application in Docker container.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image35.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Next, scroll down to the bottom of the page and click the
+    <strong>Technology Report</strong> link, this will open a new browser window to
+    show the application <strong>Evaluation Report</strong>.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image36.png" /></p>
+</blockquote>
+<p>The report lists all java technologies the application uses and
+whether these technologies are supported by a specific WebSphere
+platform from Liberty for Java on IBM Cloud to WebSphere traditional
+for z/OS.</p>
+<p>It is used to determine whether a particular WebSphere product is
+suitable for an application.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image37.png" /></p>
+</blockquote>
+<p>As we can see from the report, the <strong>Mod Resorts</strong> application only uses Java Servlet which is supported by all WebSphere platforms.</p>
+</li>
+<li>
+<p>Go back to the <strong>Transformation Advisor</strong> page and click the
+    <strong>Analysis Report</strong> link.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image38.png" /></p>
+</blockquote>
+<p>a) Click <strong>OK</strong> to continue</p>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image39.png" /></p>
+<blockquote>
+<p>Now you see the <strong>Detailed Migration Analysis Report</strong> opened in a new browser window.</p>
+</blockquote>
+<p><img alt="" src="../itc19/media/image40.png" /></p>
+<blockquote>
+<p>This is the <strong>deep-dive report</strong> which shows all issue found at the code level.</p>
+</blockquote>
+<p>b) Scroll down to <strong>Detailed Results by Rule</strong> section, you can see all the java technology issues identified based on different
+ migration rules.</p>
+<blockquote>
+<p>For the <strong>Mod Resorts</strong> application, there is one warning rule
+regarding the application configuration in Docker containers.</p>
+</blockquote>
+<p><img alt="" src="../itc19/media/image41.png" /></p>
+<p>c) Click the <strong>Show results</strong> link related to the Warning for     configuration in Docker containers.</p>
+<blockquote>
+<p>You can see the <strong>detail analysis of the issue at code level</strong>, in a specific class file and specific line. This will help developers to pinpoint where the issue is, or potential issue may be.</p>
+</blockquote>
+<p><img alt="" src="../itc19/media/image42.png" /></p>
+<p>d) Click the <strong>Show rule help</strong> link.</p>
+<p><img alt="" src="../itc19/media/image43.png" /></p>
+<blockquote>
+<p>This will expand the <strong>Rule Help</strong> section which provides recommended solutions on how to fix the issue.</p>
+<p>For the Docker container configuration issue, the utility provides best practice suggestion to externalize the configuration for the container</p>
+</blockquote>
+<p><img alt="" src="../itc19/media/image44.png" /></p>
+</li>
+<li>
+<p>Go back to the <strong>Transformation Advisor</strong> page and click the
+    <strong>Inventory Report</strong> link.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image45.png" /></p>
+</blockquote>
+<p>The <strong>Inventory Report</strong> helps you examine what is in your
+ application, including the number of modules, their relationships and
+the technologies in those modules.</p>
+<p>It also gives you a view of all the utility JAR files in the
+application that tend to accumulate over time. Potential deployment
+problems and performance considerations are also included.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image46.png" /></p>
+</blockquote>
+<p>a) Scroll down to view this report which serves as good
+decision-making tool to inform you what is inside your app
+runtime. It helps provide a clearer understanding of the app
+runtime, the components it has and the relationships among them.</p>
+<p><img alt="" src="../itc19/media/image47.png" /></p>
+<blockquote>
+<p>From the analysis reports we looked at above, we know that the <strong>Mod Resorts</strong> application is supported by Liberty on Private Cloud as the target environment, and the issue that the tool identified would not affect the application migration.</p>
+<p>You can confidently select the application as a good candidate for moving to liberty on cloud in the repackage process with minimum effort.</p>
+</blockquote>
+</li>
+<li>
+<p>Now you know that the <strong>Mod Resorts</strong> application can be repacked to Liberty on cloud, you want to know if it is also a good candidate to re-platform with WAS Base on cloud.</p>
+<p>a) To do that, return to the TA <strong>recommendations</strong> page. Then
+    change the target environment from <strong>Liberty on Private
+    Cloud</strong> to <strong>WebSphere Traditional on Private Cloud</strong>.</p>
+<p><img src="./itc19/media/image48.png" width="450" height="400"></p>
+<blockquote>
+<p>As you can see from the TA recommendation, the <strong>Mod Resorts</strong> application is also a good candidate for re-platform in WAS container on cloud, if desired.</p>
+<p>If you want to review the recommendation details, you can follow the same steps you did before to go over them.</p>
+</blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc19/media/image49.png" /></p>
+</li>
+</ol>
+<p><br></p>
+<h2 id="quick-detour-additional-powerful-capabilities-in-transformation-advisor">Quick Detour - Additional powerful capabilities in Transformation Advisor!</h2>
+<h3 id="how-transformation-advisor-helps-modernize-a-java-ee-application-to-ibm-cloud-pak-for-applications-on-redhat-openshift">How Transformation Advisor helps Modernize a Java EE application to IBM Cloud Pak for Applications on RedHat OpenShift**</h3>
+<p>Transformation Advisor helps accelerate the development activities
+required during the modernization of a Java EE application currently
+deployed to IBM WebSphere Application Server, Oracle WebLogic, Apache
+Tomcat or Red Hat JBoss Application Server.</p>
+<p><img alt="A close up of a map Description automatically
+generated" src="../itc19/media/image50.png" /></p>
+<p>The capabilities of Transformation Advisor help bring the cloud-native
+development experience to the modernization of existing WebSphere / Java applications.</p>
+<p>For reference, the cloud-native development process using Application
+Stacks simplifies the process of building and deploying applications to Kubernetes</p>
+<p><img alt="" src="../itc19/media/image51.png" /></p>
+<p>View the <strong>migration bundle</strong> contents for the ModResorts application</p>
+<p>Transformation Advisor generates migration artifacts that are needed to deploy a modernized application to IBM Cloud Pak for Applications and RedHat OpenShift. This section simply provides a quick peak into this exciting capability from Transformation Advisor. Additional hands-on labs on these capabilities can be arranged through your IBM
+representative.</p>
+<ol>
+<li>
+<p>Click on the menu with the “hamburger icon” next to the ModResorts
+    application analysis to display the menu choices and choose <strong>View
+    migration plan</strong>:  </p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image52.png" />  </p>
+</blockquote>
+<p>Transformation Advisor will display details about the migration
+bundle that it generated to accelerate the modernization of this
+application into IBM Cloud Pak for Applications. The migration
+bundle includes diverse artifacts, depending on the needs of the
+application.  </p>
+<p>As illustrated below, the user can choose to create a migration
+bundle for either:
+- a <strong>binary</strong> project of an application (uploading a WAR/EAR file and its dependent libraries)
+- a <strong>source</strong> project of an application, so that the application
+source files can be modernized and maintained.</p>
+<p><br> </p>
+<p><img alt="" src="../itc19/media/image53.png" /></p>
+</li>
+<li>
+<p>Notice the contents of the migration bundle. (<strong>Migration Files</strong>)  </p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image54.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p>The artifacts change, depending on the user’s modernization choices for the application (Source or Binary).</p>
+<p>The default selection for an application that uses only EE7 features
+and above will be to deploy as a <strong>source application project</strong>.</p>
+<p>The project will be a source project, with the directory structure set
+up with a starter application and the Liberty configuration for the
+application.  </p>
+<p>To accelerate the application modernization, the artifacts produced by
+Transformation Advisor include the configuration for the Liberty
+server, the build file for the application which can used with the
+Application Stacks, Dockerfile and Operator files for containerized
+deployments to RedHat OpenShift with IBM Cloud Pak for Applications.  </p>
+<p>The user will be able to choose to <strong>download</strong> the artifacts as a
+migration bundle or <strong>push the bundle contents into a GitHub</strong>
+repository. See the illustration below.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image55.png" /></p>
+</blockquote>
+<p>A complete exploration of these exciting capabilities is beyond the scope of this lab. However, these powerful features avaiable in Transformation Advisor help expedite the journey to cloud for existing WebSphere Applications. </p>
+<p><br> </p>
+<h2 id="evaluate-the-plantsbywebsphere-application"><strong>Evaluate the PlantsByWebSphere Application</strong></h2>
+<p>You have evaluated and assessed modernizing a simple application that uses only a single Java EE technology.  Now, let’s explore a more sophisticated Java EE application that was developed using many Java EE API's found in traditional WebSphere Applications. </p>
+<ol>
+<li>
+<p>Navigate back to the <strong>Transformation Advisor</strong> <strong>Recommendations</strong>
+    page. You can follow the same procedure you did for the <strong>Mod
+    Resorts</strong> application to view the analysis results for the
+    <strong>PlantsByWebSphere</strong> application.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image56.png" /></p>
+</blockquote>
+<p>As you can see from the Summary list, the recommendations for the  application to move to cloud are as follows: 
+  - The complexity level is Simple.
+  - Tech match is 100%, which means that the application code can be
+deployed to Liberty on Private Cloud without any changes. 
+  - The app has 3 dependencies and 7 issues, including 1 high severity
+level, 1 medium severity level and 5 low severity level. 
+  - The estimated development effort is 0 day because no code changes
+are needed.</p>
+</li>
+<li>
+<p>View the <strong>Application Technology report</strong> for
+    <strong>PlantsByWebSphereEE6.ear</strong> application.</p>
+<p>Notice all of the technologies that this application uses, all of which are suported in ALL of the editions of WebSPhere.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image57.png" /></p>
+<p><img alt="" src="../itc19/media/image58.png" /></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="evaluate-the-complex-defaultappliction-application"><strong>Evaluate the Complex DefaultAppliction Application</strong></h3>
+<ol>
+<li>
+<p>Navigate back to the <strong>Transformation Advisor</strong> <strong>Recommendations</strong> page. Select the <strong>DefaultApplication.ear</strong> application.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image59.png" /></p>
+</blockquote>
+<p>As you can see from the Summary list, this is a more complex application to modernize.</p>
+</li>
+<li>
+<p>View the <strong>Application Technology report</strong> for
+    <strong>DefaultApplication.ear</strong> application.</p>
+<p>As you review the Technology report, you will discover that the application makes extensive use of EJB Entity Beans. EJB Entity beans are a deprecated Java EE technology, and not supported in WebSphere Liberty, which is the preferred WebSphere edition for Cloud environments.  </p>
+<p>The modernization of this application is more complex due to the need to rewrite parts of the application with Java EE technologies that are supported on WebSphere Liberty.</p>
+<p>However, <strong>WAS Base</strong> in <strong>containers</strong> is an alternative for running the application in IBM Cloud Pak for Applications with RedHat OpenShift. This option would allow you to move the application to cloud in containers (IBM Cloud Pak for Applications with Redhat OpenShift) with little or NO code changes.</p>
+<p>As the technology report reveals, the EJB Entity Beans technologies are supported in the traditional WAS Base and WAS ND editions. WAS Base in containers is a supported configuration in IB Cloud Pak for Applications.</p>
+<p>So, for this application, you might choose to move the application to WAS Base in containers, on cloud.</p>
+<blockquote>
+<p><img alt="" src="../itc19/media/image57.png" /></p>
+<p><img alt="" src="../itc19/media/image60.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="summary">Summary</h2>
+<p>In this lab, you learned how to evaluate the existing Java application
+using <strong>IBM Transformation Advisor</strong>.</p>
+<p>As a part of IBM App Modernization solutions in <strong>IBM Cloud Pak for
+Applications</strong>, the <strong>Transformation Advisor</strong> tool provides a
+recommendation for the right-fit IBM WebSphere Application Server
+edition and offers advice, best practices and potential solutions to
+assess the ease of moving apps to Liberty or to <strong>WAS</strong> container, or to newer versions of WebSphere traditional.</p>
+<p>It will accelerate application migrating to cloud process, minimize
+errors and risks and reduce time to market. To learn more about IBM App Modernization solutions, please visit <a href="https://www.ibm.com/cloud/cloud-pak-for-applications">Cloud Pak for
+Applications</a>.</p>
+<p><br></p>
+<p><strong>Congratulations! You have successfully completed the lab “Evaluate
+On-Premises Java Apps with Transformation Advisor”.</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

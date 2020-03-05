@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>***Lab: ITC-26*** - Tech Con 2020 (Dallas)</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "***Lab: ITC-26***";
+    var mkdocs_page_input_path = "ITC-26_v1.1-MCM_Policy_Lab_LABGUIDE-tgf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Tech Con 2020 (Dallas)</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../appmod/">Application Modernization Lab Guides</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Tech Con 2020 (Dallas)</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>***Lab: ITC-26***</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="lab-itc-26"><strong><em>Lab: ITC-26</em></strong></h1>
+<h1 id="cloud-pak-for-multicloud-management-governance-policy-lab"><strong><em>Cloud Pak for MultiCloud Management - Governance Policy Lab</em></strong></h1>
+<h2 id="lab-how-to-create-policy-and-enforce-it"><strong>Lab. How to create Policy and enforce it</strong></h2>
+<p>The IBM Cloud Pak™ for Multicloud Management, running on Red Hat®
+OpenShift®, provides consistent visibility, governance and automation
+from on premises to the edge. Enterprises gain capabilities such as
+multicluster management, event management, application management and
+infrastructure management. Enterprises can leverage this IBM Cloud Pak
+to help increase operational efficiency that is driven by intelligent
+data analysis and predictive golden signals and gain built-in support
+for their compliance management.</p>
+<p>You can also take advantage of the governance, as with this IBM Cloud
+Pak for Multicloud Management, you can manage your multicloud
+environments with a consistent set of configuration and security
+policies across all applications and clusters.</p>
+<p>This lab walks you through the process of setting up policies and
+evaluating them. It also serves as examples for creating your own
+policies.</p>
+<p>Here is a schematic describing how is the environment provided to create
+your policies, inform and enforce to clear violations. One hub used also
+as local cluster and a managed/remote cluster.</p>
+<p><img alt="A screenshot of a cell phone Description automatically
+generated" src="../itc26/media/image2.png" /></p>
+<h2 id="objective">Objective</h2>
+<p>The objectives of this lab are to:</p>
+<ul>
+<li>
+<p>Learn how to create different types of policies, check the state and
+    enforce them to clear violations.</p>
+</li>
+<li>
+<p>Enforce a complex policy using a defined use-case</p>
+</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following prerequisites must be completed prior to beginning this
+lab:</p>
+<ul>
+<li>
+<p>Familiarity with basic Linux commands and Kubernetes commands</p>
+</li>
+<li>
+<p>A Management Cluster is available and ready to use</p>
+</li>
+<li>
+<p>An OpenShift cluster that needs to be managed</p>
+</li>
+</ul>
+<p>The following symbols appear in this document at places where additional
+guidance is available.</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Purpose</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="sign-caution" src="../itc26/media/image3.png" /></td>
+<td>Important!</td>
+<td><strong>This symbol calls attention to a particular step or command. For example, it might alert you to type a command carefully because it is case sensitive.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-info" src="../itc26/media/image4.png" /></td>
+<td>Information</td>
+<td><strong>This symbol indicates information that might not be necessary to complete a step, but is helpful or good to know.</strong></td>
+</tr>
+<tr>
+<td><img alt="sign-troubleshooting" src="../itc26/media/image5.png" /></td>
+<td><strong>Trouble-shooting</strong></td>
+<td><strong>This symbol indicates that you can fix a specific problem by completing the associated troubleshooting information.</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-is-already-completed">What is Already Completed</h2>
+<p>Two OpenShift Clusters pre-deployed where one cluster acts as Management
+Cluster and other acts as managed cluster.</p>
+<ul>
+<li>
+<p>On the management cluster, the management software is loaded.</p>
+</li>
+<li>
+<p>The management cluster (named as local-cluster) also configured to
+    manage itself.</p>
+</li>
+<li>
+<p>The managed cluster (named as managed-cluster)</p>
+</li>
+</ul>
+<p><img alt="A screenshot of a video game Description automatically
+generated" src="../itc26/media/image6.png" /></p>
+<ul>
+<li>
+<p>The <strong>Developer</strong> VM is the one you will use to access and work with
+    <strong>OCP</strong> in this lab.</p>
+<p><strong>The login credentials for the Developer VM are:</strong></p>
+<pre><code>User ID: ibmuser
+
+Password: passw0rd (this is the same sudo password)
+</code></pre>
+</li>
+</ul>
+<h2 id="lab-tasks">Lab Tasks</h2>
+<p>During this lab, you will complete the following tasks:</p>
+<ul>
+<li>
+<p>Log in to the Management Cluster from workstation</p>
+</li>
+<li>
+<p>Use the console to create a few governance policies</p>
+</li>
+<li>
+<p>Check the state of the created policies</p>
+</li>
+<li>
+<p>Change the policy enforcement and validate the changes</p>
+</li>
+</ul>
+<h2 id="execute-lab-tasks">Execute Lab Tasks</h2>
+<h3 id="log-in-to-the-workstation-vm-and-get-started"><strong>Log in to the Workstation VM and get started</strong></h3>
+<ol>
+<li>
+<p>If the VMs are not already started, Launch the six lab VMs by
+    clicking the <strong>Play</strong> button highlighted in the above picture.</p>
+</li>
+<li>
+<p>After the VMs are started (takes few minutes), click the
+    <strong>Developer</strong> VM icon to access it.</p>
+</li>
+</ol>
+<p><img alt="A screenshot of a cell phone Description automatically
+generated" src="../itc26/media/image7.png" /></p>
+<p>The <strong>Developer VM’s Linux Desktop</strong> is displayed. You will execute all the lab tasks on this VM.</p>
+<p><br> </p>
+<h3 id="check-the-environment"><strong>Check the Environment</strong></h3>
+<p>In this task, let’s check the Management environment to ensure it is up
+and its pods are all running.</p>
+<p>To check the environment, login to the “<strong>Developer</strong>” VM using userid:
+<strong>ibmuser</strong> and password: <strong>passw0rd</strong>. The workstation has the required
+tools <strong>oc</strong>, <strong>cloudctl</strong> and <strong>helm</strong> tools installed</p>
+<ol>
+<li>
+<p>Launch a terminal window and login to Management OpenShift Cluster.</p>
+<pre><code> oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>Verify all of the managent pods are running in the Management
+    clusters</p>
+<pre><code>oc get pods -n kube-system | grep -v Running|grep -v Completed
+
+oc get pods -n multicluster-endpoint | grep -v Running|grep -v Completed
+</code></pre>
+</li>
+</ol>
+<p><img alt="" src="../itc26/media/image8.png" /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image3.png" style="width:1.31458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p>There should NOT be any pods listed in the results. That indicates all of the pods are in the Running state.</p>
+<p>If there are pods listed, and not running, contact the instructor, as the managent cluster may not be running correctly.</p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Launch a Mozilla Firefox browser, login to the Mutlicloud Management
+    Console, there is already a bookmark configured</p>
+<p>URL: <a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://icp-console.apps.demo.ibmdte.net/multicloud/welcome</span></a></p>
+<pre><code>userid: admin
+password: passw0rd
+</code></pre>
+</li>
+<li>
+<p>You should see the Multicloud Management Consoles, Welcome page
+    (<strong>read below, if you do not get this page</strong>)</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image9.png" /></p>
+</blockquote>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image5.png" style="width:1.061458in;height:0.61458in" alt="sign-troubleshooting" /></td>
+<td><p><strong>NOTE</strong>: If you see the incorrect page: “<strong>IBMCloud Pak</strong>” screen, <strong>Rerun</strong> the URL link again.</p>
+<p><strong>This appears to be a bug in our lab environment</strong></p>
+<p><img src="./itc26/media/image10.png" style="width:4.1875in;height:4.04127in" /></p></td>
+</tr>
+</tbody>
+</table>
+
+<p><br> </p>
+<h3 id="reference-introduction-to-ibm-multicloud-manager-policies"><strong>Reference: Introduction to IBM Multicloud Manager Policies</strong></h3>
+<p>IBM Multicloud Manager enables you to check whether your clusters are
+operating properly by comparing the current configuration of various
+resources against your desired state.</p>
+<p>The system enables you to create compliance templates that can check
+policies against roles, or pod objects within the clusters.</p>
+<p><strong>IBM Multicloud Manager supports many types of policies.</strong></p>
+<ul>
+<li>
+<p><strong>Network policies</strong> : Handled by the SDN (software defined network)
+    resource</p>
+</li>
+<li>
+<p><strong>MCM Policies</strong> : handled by the MCM resource definition</p>
+<ul>
+<li>
+<p>Object template: Pods</p>
+</li>
+<li>
+<p>Role template: Roles and role bindings</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Placement Policies</strong> : Handled by the MCM</p>
+</li>
+<li>
+<p><strong>Mutation Policies</strong> : Handled by the mutation advisor resource</p>
+<ul>
+<li>Container changes</li>
+</ul>
+</li>
+</ul>
+<p><strong>Remediation actions:</strong></p>
+<p>There are two ways to handle a policy violation in your clusters:</p>
+<ol>
+<li>
+<p>Auto remediation by policy controller when ‘<strong>enforce</strong>’ action is
+    specified in policy</p>
+<ul>
+<li>“<strong>Inform</strong>” action provides notification that a cluster is out
+    of compliance, but does enforce compliance.</li>
+</ul>
+</li>
+<li>
+<p>Policy controller <strong>generates Cloud Event Manager incidents</strong> for
+    policy <strong>violations</strong></p>
+<p>MCM Hub generates <strong>audit logs</strong> to Security information and event management (SIEM) for findings (policy violations are also mapped to findings)</p>
+</li>
+</ol>
+<p><img alt="" src="../itc26/media/image11.png" /></p>
+<p><strong>Example: Mutation Policy</strong></p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image12.png" /></p>
+</blockquote>
+<p>Refer to the documentation for more information:</p>
+<p><a href="https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/mcm/compliance/compliance_intro.html">https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/mcm/compliance/compliance_intro.html</a></p>
+<p><br></p>
+<h3 id="create-a-namespace-enforcement-policy"><strong>Create a Namespace enforcement Policy</strong></h3>
+<p>This task creates a policy that ensures that a specified <strong>namespace</strong>
+is present in clusters that match the selection criteria.</p>
+<ol>
+<li>
+<p>Launch a new Terminal Window, and log in to OpenShift Cluster</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+</li>
+<li>
+<p>Run the following command to ensure that the environment does not already have a namespace that the “Namespace Policy” will create and enforce.</p>
+<pre><code>oc get ns | grep k8demo
+
+   where &lt;k8demo&gt; is the name of the namespace we are searching
+</code></pre>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image3.png" style="width:0.801458in;height:0.61458in" alt="sign-caution" /></td>
+<td><p>The previous command should <strong><span class="underline">NOT</span></strong> return any results.</p>
+<p><strong>NOTE:</strong> If the namespace already exists, run the following command to delete it:</p>
+<p><strong>oc delete project k8demo</strong></p></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Return to the MCM Web Console</p>
+<p>https://icp-console.apps.demo.ibmdte.net/multicloud/welcome </p>
+<pre><code>Login using the following Credentials:
+
+  User:admin
+  Password: passw0rd
+</code></pre>
+</li>
+<li>
+<p>Navigate to <strong>Menu &gt; Govern risk</strong>. Here you can view and create
+    compliance policies for your managed clusters**</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc26/media/image13.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click the <strong>Policies</strong> tab. This view displays the policies that
+    have been created and the dashboard of policy compliance for each
+    cluster. Currently, you do not have any compliance policies created.</p>
+<blockquote>
+<p><img alt="A screenshot of a cell phone Description automatically generated" src="../itc26/media/image14.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Click on <strong>create policy</strong> <img src="./itc26/media/image15.png" style="width:0.985808in;height:.39167in" /> button. Fill the values as specified in the table below:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Field Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Name</td>
+<td>policy-namespace</td>
+</tr>
+<tr class="even">
+<td>Namespace</td>
+<td>Choose the “<strong>default</strong>” namespace</td>
+</tr>
+<tr class="odd">
+<td>Specifications</td>
+<td><p>Choose: <strong>Namespace-must have namespace ‘prod’</strong></p>
+<p><strong>Note:</strong> You will modify the name prod to k8demo.</p>
+<p>Selecting this will provide a template to have custom namespace policy definition</p></td>
+</tr>
+<tr class="even">
+<td>Cluster binding</td>
+<td>Choose name: “<strong>local-cluster</strong>”</td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>In the <strong>yaml file section</strong>, on the right, change <strong>prod</strong> to
+    <strong>k8demo</strong>.</p>
+<p>Changing the namespace will change the Policy Specifications to Custom Specifications as below. </p>
+<p>Notice that the policy is set to “<strong>inform</strong>” rather than “<strong>enforce</strong>”.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image16.png" /></p>
+<p><img alt="" src="../itc26/media/image17.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Use the Create button, <img alt="" src="../itc26/media/image18.png" /> to create your new policy.</p>
+</li>
+<li>
+<p>If you are not redirected automatically navigate to <strong>Menu &gt; Govern risk</strong> to return to the Dashboard</p>
+</li>
+<li>
+<p>In few seconds, the policy controller will check if the namespace
+    <strong>k8demo</strong> is present and provides information regarding the current
+    compliance of the policies.</p>
+<p>Remember, you didn’t <strong>enforce</strong> this policy. Instead we specified <strong>inform.</strong>
+As such, the Governance and risk view displays a <strong>policy violation</strong> in our cluster, as illustrated below.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image19.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Use the <strong>Cluster Violations</strong> link <img alt="" src="../itc26/media/image20.png" /> to
+    find which cluster is violating the policy. The link is located to
+    the far right of the screen, as illustrated below.</p>
+<p>The <strong>local-cluster</strong> cluster is in violation of the policy which requires a namespace called “<strong>k8demo</strong>” to exist.</p>
+<p>The <strong>local-cluster</strong> cluster is our cluster, and the same cluster that verified “k8demo” namespace does not exist. Hence it shows that there is no namespace k8demo in the cluster.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image21.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Verify the k8demo namespace still does not exist.</p>
+<pre><code>oc get project | grep k8demo
+</code></pre>
+<p>There should <strong>NOT</strong> be a namespace named <strong>k8demo</strong> listed, which indicates the policy did not ENFORCE it to be created.</p>
+</li>
+<li>
+<p>Change the “policy-namespace” policy to be <strong>enforced</strong></p>
+<p>When a policy is in “<strong>enforce</strong>” mode, the namespace will automatically be created, if it does not exist, thereby enforcing the cluster into compliance.</p>
+<p>a)  In the <strong>policies</strong> view, select <strong>POLICY VIOLATIONS link, as shown
+below</strong></p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc26/media/image22.png" /></p>
+</blockquote>
+<p>b)  Then, select the policy named “<strong>policy-namespace</strong>” and go to
+<strong>YAML</strong> view</p>
+<p>c)  Click on the <img alt="" src="../itc26/media/image23.png" /> button to go into edit mode.</p>
+<p>d)  Change the value of “<strong>remediationAction: inform</strong>” to “<strong>remediationAction: enforce</strong>”</p>
+<p>e)  Click the <img alt="" src="../itc26/media/image24.png" /> to submit the change</p>
+<blockquote>
+<p><img alt="A screenshot of a computer screen Description automatically generated" src="../itc26/media/image25.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Select the <strong>policy-namespace</strong> link. A few seconds later, the
+    policy violation will be gone</p>
+<blockquote>
+<p><img alt="A screenshot of a social media post Description automatically generated" src="../itc26/media/image26.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>You also can validate the same from the <strong>Violations</strong> view.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image27.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Run the following command to ensure that the k8demo namespace has
+    been created in the cluster.</p>
+<pre><code>oc get ns | grep k8demo
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc26/media/image28.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Try deleting the namespace and check how is being created
+    automatically again.</p>
+<pre><code>oc delete project k8demo
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc26/media/image29.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br></p>
+<h3 id="create-a-network-policy-to-enforce-on-a-namespace"><strong>Create a Network Policy to enforce on a namespace</strong></h3>
+<p>In this task, you create a network policy just for informational
+purpose. Then modify it to enforce the policy. In this scenario, the
+Network Policy is used to control (block) network traffic from other
+pods.</p>
+<p>You will perform the following tasks:</p>
+<ul>
+<li>
+<p>Create a project (namespace) for this policy</p>
+</li>
+<li>
+<p>Create NetworkPolicy targeting the new namespace</p>
+</li>
+<li>
+<p>Check if the network policy is configured correctly</p>
+</li>
+</ul>
+<!-- end list -->
+
+<ol>
+<li>
+<p>Let’s create a new project to enforce a <strong>Network Deny</strong> Policy to disable network traffic from pods</p>
+<p>a) login to Management OpenShift Cluster</p>
+<pre><code>oc login -u admin -p passw0rd https://api.demo.ibmdte.net:6443
+</code></pre>
+<p>b) Create a new project with name <strong>denypolicy</strong></p>
+<pre><code>oc new-project denypolicy
+</code></pre>
+</li>
+<li>
+<p>Return to the <strong>MCM console</strong>. Then go to <strong>Menu -> Governance and Risk</strong></p>
+<p>This launches the policy management view. If there are no policy, no policies will be listed.</p>
+</li>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image30.png" /> button to create a new policy</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image31.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Configure the new <strong>network policy</strong> according to the table below</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name of the policy</td>
+<td>policy-network</td>
+</tr>
+<tr>
+<td>Namespaces</td>
+<td>Choose: “denypolicy”</td>
+</tr>
+<tr>
+<td>Specifications</td>
+<td>Choose: “Networkpolicy-deny network request”</td>
+</tr>
+<tr>
+<td>Cluster binding</td>
+<td>Choose name: “<strong>local-cluster</strong>”</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>In the right side section (YAML), change the namespace from
+    <strong>include: [“default”]</strong> to <strong>include: [“denypolicy”]</strong></p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image32.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image33.png" /> button which returns console to Policies view. After few seconds, you will find that there is a
+    cluster <strong>violation</strong> on the network policy, <strong>policy-network</strong></p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image34.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Select the <strong>CLUSTER VIOLATIONS</strong> link to view which cluster is violating this policy. As, this policy is configured for
+    informational purpose, the violation is just shown. It is not
+    rectified.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image35.png" /></p>
+<p><img alt="" src="../itc26/media/image36.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Change the “<strong>policy-network</strong>” policy to be enforced</p>
+<p>a) In the <strong>policies</strong> view, select <strong>POLICY VIOLATIONS</strong></p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image37.png" /></p>
+</blockquote>
+<p>b) Then, select the policy named “<strong>policy-network</strong>” and go to
+<strong>YAML</strong> view</p>
+<p>c) Click on the <img alt="" src="../itc26/media/image23.png" /> button to go into edit mode.</p>
+<p>d) Change the value of “<strong>remediationAction: inform</strong>” to
+“<strong>remediationAction: enforce</strong>”</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image38.png" /></p>
+</blockquote>
+<p>e) Click the <img alt="" src="../itc26/media/image24.png" /> to submit the change</p>
+</li>
+<li>
+<p>Go back to the <strong>policy-network</strong> view and see the violation is cleared</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image39.png" /></p>
+<p><img alt="" src="../itc26/media/image40.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>You can validate the network policy that is created on the namespace “<strong>denypolicy</strong>”.</p>
+<p>a) Using the CLI, run the following command to get the network
+policies for the namespace</p>
+<pre><code>oc -n denypolicy get networkpolicies
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc26/media/image41.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br></p>
+<h3 id="create-policy-that-limits-memory-range-for-a-namespace"><strong>Create Policy that limits memory range for a namespace</strong></h3>
+<p>In this task, you will create a policy where it enforces limits for memory range in a given namespace.</p>
+<ol>
+<li>
+<p>Return to the <strong>MCM console</strong>. Then go to <strong>Menu -> Governance and
+    Risk</strong>.</p>
+<p>This launches the policy management view. If there are no policy, no policies will be listed.</p>
+</li>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image30.png" /> button to create a new policy</p>
+<blockquote>
+<p><img alt="A close up of a logo Description automatically generated" src="../itc26/media/image42.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Configure the new policy, enforcing quota limits, according to the table below:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>policy-quotalimit</td>
+</tr>
+<tr>
+<td>Specifications</td>
+<td>Choose: Limitrange-limit memory usage</td>
+</tr>
+<tr>
+<td>Namespaces</td>
+<td>Choose: k8demo</td>
+</tr>
+<tr>
+<td>Cluster bindings</td>
+<td>Choose name: “<strong>local-cluster</strong>”</td>
+</tr>
+<tr>
+<td>Enforce if supported</td>
+<td>Check the box</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>In the right-side section (<strong>YAML</strong>), change the namespace where the quota needs to be created.</p>
+<p>a) Change from <strong>include: [“default”]</strong> to <strong>include: [“k8demo”]</strong>,  which is a namespace we created earlier in the lab, by policy enforcement.</p>
+<p>As an enhancement, you will modify the YAML template to add the <strong>quota</strong> for the namespace, like max and min values for CPU and Memory along with a default range.</p>
+</li>
+<li>
+<p>Modify the YAML to include the limits that were mentioned in the previous step.</p>
+<p>a) The <strong>YAML file section</strong> as highlighted below <strong>before</strong> and
+<strong>after</strong> is shown below. Ensure the whitespaces match the syntax, as illustrated below:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><u><strong>Before:</strong></u></p>
+
+<pre><code>limits:
+- default:
+    memory: 512Mi
+  defaultRequest:
+    memory: 256Mi
+  type: Container
+</code></pre>
+
+</blockquote></th>
+<th><img src="./itc26/media/image43.png" style="width:3.31808in;height:1.64167in" /></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><u><strong>After:</strong></u></p>
+
+
+<pre><code>limits:
+- type: &quot;Pod&quot;
+  max:
+    cpu: &quot;2&quot;
+    memory: &quot;1Gi&quot;
+  min:
+    cpu: &quot;200m&quot;
+    memory: &quot;6Mi&quot;
+- type: &quot;Container&quot;
+  max:
+    cpu: &quot;2&quot;
+    memory: &quot;1Gi&quot;
+  min: &lt;br&gt;
+    cpu: &quot;100m&quot;
+    memory: &quot;4Mi&quot;
+  default:
+    cpu: &quot;300m&quot;
+</code></pre>
+
+
+</blockquote>
+<td><img src="./itc26/media/image44.png" style="width:3.36667in;height:2.6162in" /></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Review the YAML before you create the policy</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image45.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image33.png" /> button to create the policy</p>
+</li>
+<li>
+<p>Validate if the policy is enforced.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image46.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Validate the quota is created on the k8demo namespace</p>
+<pre><code>oc -n k8demo get limits
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc26/media/image47.png" /></p>
+</blockquote>
+<pre><code>oc -n k8demo get limits -o yaml
+</code></pre>
+<p>The resource limits for the k8sdemo namespace are shown below.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image48.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h3 id="create-policy-that-a-pod-must-exist-in-a-given-namespace"><strong>Create Policy that a pod must exist in a given namespace</strong></h3>
+<p>In this task, you will create a policy where it enforces that a pod is present in a given namespace.</p>
+<ol>
+<li>
+<p>Return to the <strong>MCM console</strong>, and go to <strong>Menu -> Governance and
+    Risk</strong>.</p>
+<p>This launches the policy management view. If there are no policy, no policies will be listed.</p>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image3.png" style="width:1.951458in;height:0.61458in" alt="sign-caution" /></td>
+<td><blockquote>
+<p><strong>FYI:</strong> You may notice <strong>HIGH SEVEERITY SECURITY FINDINGS</strong> listed in the Governance and Risks section of the MCM console.</p>
+<p>You can ignore these findings during the lab.</p>
+<p>MCM records and maintains severity security findings based on the policies you have created. In this lab, the network security policy violation was a high severity security finding.</p>
+<p>By default, MCM lists these findings, and will automatically be removed from the view after some pre-determined time in the future.</p>
+<img src="./itc26/media/image49.png" style="width:5.27196in;height:0.81111in" />
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image30.png" /> button to create a new policy</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image31.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Configure the new policy, requiring pod be present, according to the
+    table below</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>policy-pod</td>
+</tr>
+<tr>
+<td>Specifications</td>
+<td>Choose: Pod-nginx pod must exist</td>
+</tr>
+<tr>
+<td>Namespaces</td>
+<td>Choose: k8demo</td>
+</tr>
+<tr>
+<td>Cluster bindings</td>
+<td>Choose name: “<strong>local-cluster</strong>”</td>
+</tr>
+<tr>
+<td>Enforce if supported</td>
+<td>Check the box</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>In the right side section (YAML), change the namespace where the pod needs to be created.</p>
+<p>a) Change from <strong>include: [“default”]</strong> to <strong>include: [“k8demo”]</strong>,
+which is a namespace we created earlier in the lab, by policy
+enforcement.</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image50.png" /></p>
+</blockquote>
+<p>b) Review the policy settings, as illustrated below</p>
+<blockquote>
+<p><img alt="" src="../itc26/media/image51.png" /></p>
+</blockquote>
+</li>
+<li>
+<p>Select the <img alt="" src="../itc26/media/image33.png" /> button to create the policy</p>
+</li>
+<li>
+<p>Select the <strong>policy-pod</strong> to launch the policy view. You will find initially it will be in violation and will quickly turn to green as the enforcement kicks in and creates the pod.</p>
+</li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="./itc26/media/image4.png" style="width:1.079167in;height:0.65625in" alt="sign-info" /></td>
+<td><h4 id="known-issue-false-positive-violation-when-enforcing-policy-to-create-a-pod-2286" class="list-paragraph">Known issue: False positive violation when enforcing policy to create a pod #2286</h1>
+<p><strong>This will be fixed in the next iteration</strong></p></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><img alt="" src="../itc26/media/image52.png" /></p>
+</blockquote>
+<ol>
+<li>
+<p>From the CLI validate if the pod is running in the k8demo namespace</p>
+<pre><code>oc -n k8demo get pods
+</code></pre>
+<blockquote>
+<p><img alt="" src="../itc26/media/image53.png" /></p>
+</blockquote>
+</li>
+</ol>
+<p><br> </p>
+<h2 id="summary">Summary</h2>
+<p>In this lab, you have learned how to create policies both for
+informational and enforcement purposes. You also learnt how to modify
+the existing policies to change from inform to enforce mode.</p>
+<p><strong>Congratulations! You have successfully completed the lab “Policy Enforcement”</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
